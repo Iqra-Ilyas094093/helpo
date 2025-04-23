@@ -56,7 +56,7 @@ class _getStartedState extends State<getStarted> {
 
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 50.0).h,
+                  padding: const EdgeInsets.only(bottom: 40.0).h,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -105,6 +105,7 @@ class _getStartedState extends State<getStarted> {
             color: secondaryColor,
             fontWeight: FontWeight.w400,
           ),
+          maxLines: 2,
           textAlign: TextAlign.center,
         ),
       ],

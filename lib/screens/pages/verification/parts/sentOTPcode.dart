@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../utilites/colors.dart';
 
 class sentOTPcode extends StatelessWidget {
-  const sentOTPcode({super.key});
+  String text;
+  sentOTPcode({super.key,required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class sentOTPcode extends StatelessWidget {
         style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500,fontSize: 16.sp),
         children: <TextSpan>[
           TextSpan(
-            text: 'iqra*********@gmail.com.',
+            text: '$text*********@gmail.com.',
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16.sp,

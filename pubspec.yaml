@@ -45,6 +45,7 @@ dependencies:
   firebase_auth: ^5.5.2
   google_sign_in: ^6.3.0
   percent_indicator: ^4.2.5
+  pinput: ^5.0.1
 
 dev_dependencies:
   flutter_test:

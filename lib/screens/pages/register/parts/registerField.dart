@@ -4,39 +4,46 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../utilites/colors.dart';
 
 class registerField extends StatelessWidget {
+
+  FocusNode node1;
+  FocusNode node2;
   TextEditingController controller;
   String hintText;
   IconData icon;
-  registerField({super.key,required this.hintText,required this.icon,required this.controller});
+ FormFieldValidator<String> validator;
+  registerField(
+      {super.key, required this.hintText, required this.icon, required this.controller,required this.validator,required this.node1,required this.node2,});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 35.h,
-      child: TextFormField(
-        controller:  controller,
+        height: 35.h,
+        child: TextFormField(
+          focusNode: node1,
+          onFieldSubmitted: (_){
+            FocusScope.of(context).requestFocus(node2);
+          },
+          validator: validator,
+        controller: controller,
         textAlign: TextAlign.left,
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 5.h,),
-          hintText: hintText,
-          border: OutlineInputBorder(
+        contentPadding: EdgeInsets.symmetric(horizontal: 5.h,),
+            hintText: hintText,
+            border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5.r),
-          ),
-          filled: true,
-          suffixIcon: Icon(
-            icon,
-            color: secondaryColor,
-          ),
-          fillColor: Theme.of(context).colorScheme.surface,
-          enabledBorder: OutlineInputBorder(
+            ),
+            filled: true,
+            suffixIcon: Icon(icon),
+            fillColor: Theme.of(context).colorScheme.surface,
+            enabledBorder: OutlineInputBorder(
             borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
+            ),
+            focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: primaryColor, width: 2),
-          ),
-        ),
-      ),
+            ),
+            ),
+            ),
     );
   }
 }

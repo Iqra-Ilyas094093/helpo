@@ -25,7 +25,10 @@ class googleCard extends StatelessWidget {
                   child: Image.asset('assets/images/google.png')),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text('Continue with Google',style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w400),),
+                child: Text('Continue with Google',style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.w700,
+                ),),
               ),
             ],
           ),

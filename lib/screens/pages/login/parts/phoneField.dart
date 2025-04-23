@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 import '../../../../utilites/colors.dart';
 
 class phoneField extends StatelessWidget {
+
   TextEditingController controller;
   phoneField({super.key,required this.controller});
 
@@ -12,6 +14,10 @@ class phoneField extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntlPhoneField(
       controller: controller,
+      initialCountryCode: "PK",
+      dropdownTextStyle: GoogleFonts.poppins(
+        color: Theme.of(context).brightness == Brightness.dark?Colors.white:Colors.black, // Apply country code color based on the theme
+      ),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 20.h),
         hintText: 'Enter Number',

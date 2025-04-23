@@ -4,24 +4,38 @@ import 'package:login_design/auth/emailAuthentication.dart';
 import 'package:login_design/screens/pages/login/loginScreen.dart';
 import 'package:login_design/screens/pages/login/parts/divider.dart';
 import 'package:login_design/screens/pages/login/parts/googleCard.dart';
+import 'package:login_design/screens/pages/login/parts/passwordField.dart';
 import 'package:login_design/screens/pages/register/parts/registerField.dart';
 import 'package:login_design/screens/pages/verification/parts/registerButton.dart';
 import 'package:login_design/screens/pages/verification/parts/topHeader.dart';
 import 'package:login_design/screens/pages/verification/verificationScreen.dart';
 import 'package:login_design/screens/pages/wrapper/wrapper.dart';
 import 'package:login_design/utilites/colors.dart';
+import 'package:login_design/utilites/customSnackbar.dart';
+import 'package:login_design/utilites/validators.dart';
 
 import '../homeScreen/homeScreen.dart';
 
-class registerScreen extends StatelessWidget {
+class registerScreen extends StatefulWidget {
   registerScreen({super.key});
 
   @override
+  State<registerScreen> createState() => _registerScreenState();
+}
+
+class _registerScreenState extends State<registerScreen> {
+  final formKey = GlobalKey<FormState>();
+  final userNode = FocusNode();
+  final emailNode = FocusNode();
+  final passwordNode = FocusNode();
+  final confirmPasswordNode = FocusNode();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController confirmPasswordController = TextEditingController();
-    TextEditingController usernameController = TextEditingController();
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -31,9 +45,9 @@ class registerScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 29.h),
+                SizedBox(height: 25.h),
                 topHeader(text: 'Register'),
-                SizedBox(height: 35.h),
+                SizedBox(height: 25.h),
                 Text(
                   "Let's Get Started ",
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -45,52 +59,64 @@ class registerScreen extends StatelessWidget {
                   "Create new Account",
                   style: TextStyle(fontSize: 16.sp, color: secondaryColor),
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 18.h),
                 registerField(
+                  node1: userNode,
+                  node2: emailNode,
+                  validator: validateUsername,
                   controller: usernameController,
                   hintText: 'Enter Name',
                   icon: Icons.person_2_outlined,
                 ),
                 SizedBox(height: 18.h),
                 registerField(
+                  node1: emailNode,
+                  node2: passwordNode,
+                  validator: validateEmail,
                   controller: emailController,
                   hintText: 'Enter Email',
                   icon: Icons.email_outlined,
                 ),
                 SizedBox(height: 18.h),
-                registerField(
-                  controller: passwordController,
-                  hintText: 'Enter Password',
-                  icon: Icons.remove_red_eye_sharp,
-                ),
+                passwordField(controller: passwordController, obscure: true, text: 'Enter Password',node2: confirmPasswordNode,node1: passwordNode,),
                 SizedBox(height: 18.h),
-                registerField(
-                  controller: confirmPasswordController,
-                  hintText: 'Confirm Password',
-                  icon: Icons.remove_red_eye_sharp,
-                ),
+                passwordField(controller: confirmPasswordController, obscure: true, text: 'Confirm Password',node1: confirmPasswordNode,node2: confirmPasswordNode,),
                 SizedBox(height: 18.h),
                 registerButton(
                   text: 'Register',
                   ontap: () async {
-                    if(passwordController.text == confirmPasswordController.text){
-                      final success = await register(context, emailController.text, passwordController.text);
-                      if(success){
+                    if (passwordController.text ==
+                        confirmPasswordController.text) {
+
+                      final success = await register(
+                        context,
+                        emailController.text,
+                        passwordController.text,
+                      );
+                      if (success) {
                         Navigator.of(context).pushReplacement(
                           PageRouteBuilder(
                             transitionDuration: Duration(milliseconds: 100),
-                            pageBuilder: (_, __, ___) => verificationScreen(),
-                            reverseTransitionDuration: const Duration(milliseconds: 60),
+                            pageBuilder: (_, __, ___) => verificationScreen(trimEmail: emailController.text.toString().substring(4),),
+                            reverseTransitionDuration: const Duration(
+                              milliseconds: 60,
+                            ),
                             transitionsBuilder: (_, animation, __, child) {
-                              return FadeTransition(opacity: animation, child: child);
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
                             },
                           ),
                         );
                       }
                     }
+                     else {
+                      showSnackbar(context, 'Passwords Not Matched');
+                    }
                   },
                 ),
-                SizedBox(height: 8.h),
+                SizedBox(height: 10.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -110,7 +136,9 @@ class registerScreen extends StatelessWidget {
                           PageRouteBuilder(
                             transitionDuration: Duration(milliseconds: 100),
                             pageBuilder: (_, __, ___) => loginScreen(),
-                            reverseTransitionDuration: const Duration(milliseconds: 60),
+                            reverseTransitionDuration: const Duration(
+                              milliseconds: 60,
+                            ),
                             transitionsBuilder: (_, animation, __, child) {
                               return FadeTransition(
                                 opacity: animation,
@@ -131,32 +159,46 @@ class registerScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 14.h),
+                SizedBox(height: 15.h),
                 divider(),
-                SizedBox(height: 8.h),
-                googleCard(onPressed: ()async{
-                  final userCred = await googleSignIn(context);
-                  if (userCred != null) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Signed in as ${userCred.user?.displayName}")),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Sign in cancelled or failed")),
-                    );
-                    Navigator.of(context).pushReplacement(
-                      PageRouteBuilder(
-                        transitionDuration: Duration(milliseconds: 100),
-                        pageBuilder: (_, __, ___) => homeScreen(),
-                        reverseTransitionDuration: const Duration(milliseconds: 60),
-                        transitionsBuilder: (_, animation, __, child) {
-                          return FadeTransition(opacity: animation, child: child);
-                        },
-                      ),
-                    );
-                  }
-                },),
-                SizedBox(height: 8.h),
+                SizedBox(height: 15.h),
+                googleCard(
+                  onPressed: () async {
+                    final userCred = await googleSignIn(context);
+                    if (userCred != null) {
+                      Navigator.of(context).pushReplacement(
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 100),
+                          pageBuilder: (_, __, ___) => homeScreen(),
+                          reverseTransitionDuration: const Duration(
+                            milliseconds: 60,
+                          ),
+                          transitionsBuilder: (_, animation, __, child) {
+                            return FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            "Signed in as ${userCred.user?.displayName}",
+                          ),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Sign in cancelled or failed"),
+                        ),
+                      );
+
+                    }
+                  },
+                ),
+                SizedBox(height: 10.h),
                 SelectableText.rich(
                   textAlign: TextAlign.center,
                   TextSpan(

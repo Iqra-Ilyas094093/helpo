@@ -12,5 +12,5 @@ List<String> mainText = [
 List<String> secondText = [
   'Allow yourself to bound within the working of your trusted bankers',
   'let us provide you with the services in our commandment',
-  'Your Trust relies with us in the meantime. Enhance the beauty of communication',
+  'Your Trust relies with us in the meantime.Enhance the communication',
 ];
