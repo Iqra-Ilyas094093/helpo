@@ -12,6 +12,7 @@ class RoutesName {
   static const String home = 'home_screen' ;
   static const String verification = 'verificationScreen' ;
   static const String getStarted = 'get_started' ;
+  static const String forgotPassword = 'forgot_Password' ;
 
 
 }

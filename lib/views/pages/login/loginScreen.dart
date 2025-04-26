@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/auth/emailAuthentication.dart';
-import 'package:login_design/screens/pages/forgotPassword/forgotPassword.dart';
-import 'package:login_design/screens/pages/homeScreen/homeScreen.dart';
-import 'package:login_design/screens/pages/login/parts/customizedTextField.dart';
-import 'package:login_design/screens/pages/login/parts/divider.dart';
-import 'package:login_design/screens/pages/login/parts/fieldLabel.dart';
-import 'package:login_design/screens/pages/login/parts/googleCard.dart';
-import 'package:login_design/screens/pages/login/parts/passwordField.dart';
-import 'package:login_design/screens/pages/login/parts/phoneField.dart';
-import 'package:login_design/screens/pages/login/parts/topheader.dart';
-import 'package:login_design/screens/pages/register/registerScreen.dart';
-import 'package:login_design/screens/pages/verification/parts/registerButton.dart';
-import 'package:login_design/screens/pages/verification/verificationScreen.dart';
 import 'package:login_design/utilites/colors.dart';
-import 'package:login_design/utilites/customSnackbar.dart';
 import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/utilites/validators.dart';
 import 'package:login_design/view_models/auth_view_model.dart';
+import 'package:login_design/views/pages/login/parts/customizedTextField.dart';
+import 'package:login_design/views/pages/login/parts/divider.dart';
+import 'package:login_design/views/pages/login/parts/fieldLabel.dart';
+import 'package:login_design/views/pages/login/parts/googleCard.dart';
+import 'package:login_design/views/pages/login/parts/passwordField.dart';
+import 'package:login_design/views/pages/login/parts/phoneField.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utilites/utils.dart';
+import '../verification/parts/registerButton.dart';
+import '../verification/parts/topHeader.dart';
 
 class loginScreen extends StatefulWidget {
   const loginScreen({super.key});
@@ -128,21 +123,7 @@ class _loginScreenState extends State<loginScreen> {
                   SizedBox(height: 5.h),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(
-                        PageRouteBuilder(
-                          transitionDuration: Duration(milliseconds: 100),
-                          pageBuilder: (_, __, ___) => forgotPassword(),
-                          reverseTransitionDuration: const Duration(
-                            milliseconds: 60,
-                          ),
-                          transitionsBuilder: (_, animation, __, child) {
-                            return FadeTransition(
-                              opacity: animation,
-                              child: child,
-                            );
-                          },
-                        ),
-                      );
+                      Navigator.pushNamed(context, RoutesName.forgotPassword);
                     },
                     child: SizedBox(
                       width: double.infinity,
@@ -164,31 +145,10 @@ class _loginScreenState extends State<loginScreen> {
                     onPressed: () async {
                       final userCred = await googleSignIn(context);
                       if (userCred != null) {
-                        Navigator.of(context).pushReplacement(
-                          PageRouteBuilder(
-                            transitionDuration: Duration(milliseconds: 100),
-                            pageBuilder: (_, __, ___) => homeScreen(),
-                            reverseTransitionDuration: const Duration(
-                              milliseconds: 60,
-                            ),
-                            transitionsBuilder: (_, animation, __, child) {
-                              return FadeTransition(
-                                opacity: animation,
-                                child: child,
-                              );
-                            },
-                          ),
-                        );
-                        SizedBox(
-                          height: 35,
-                          child: showSnackbar(
-                            context,
-                            "Signed in as ${userCred.user?.displayName}",
-                          ),
-                        );
+                        Navigator.pushReplacementNamed(context, RoutesName.home);
+                        Utils.flushBarErrorMessage("Signed in as ${userCred.user?.displayName}", context);
                       } else {
-                        showSnackbar(context, "Sign in cancelled or failed");
-
+                        Utils.flushBarErrorMessage("Sign in cancelled or failed", context);
                       }
                     },
                   ),

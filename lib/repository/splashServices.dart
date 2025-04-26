@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:login_design/models/userModel/userModel.dart';
-import 'package:login_design/screens/pages/homeScreen/homeScreen.dart';
-import 'package:login_design/screens/pages/login/loginScreen.dart';
-import 'package:login_design/screens/pages/verification/verificationScreen.dart';
-import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/view_models/user_view_model.dart';
-
-import '../screens/pages/getStarted/getStarted.dart';
+import '../views/pages/getStarted/getStarted.dart';
+import '../views/pages/homeScreen/homeScreen.dart';
+import '../views/pages/verification/verificationScreen.dart';
 
 class splashServices {
   Future<OtpResponse> getUserData() => UserViewModel().getUser();

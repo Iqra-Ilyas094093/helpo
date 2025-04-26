@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:login_design/screens/pages/getStarted/getStarted.dart';
-import 'package:login_design/screens/pages/homeScreen/homeScreen.dart';
-import 'package:login_design/screens/pages/register/registerScreen.dart';
-import 'package:login_design/screens/pages/splashScreen.dart';
-import 'package:login_design/screens/pages/verification/verificationScreen.dart';
 import 'package:login_design/utilites/routes/routes_name.dart';
-
-import '../../screens/pages/login/loginScreen.dart';
+import '../../views/pages/forgotPassword/forgotPassword.dart';
+import '../../views/pages/getStarted/getStarted.dart';
+import '../../views/pages/homeScreen/homeScreen.dart';
+import '../../views/pages/login/loginScreen.dart';
+import '../../views/pages/register/registerScreen.dart';
+import '../../views/pages/splashScreen.dart';
+import '../../views/pages/verification/verificationScreen.dart';
 
 class Routes {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch(settings.name){
+      case RoutesName.forgotPassword:
+        return PageRouteBuilder(
+          transitionDuration: Duration(milliseconds: 100),
+          pageBuilder: (_, __, ___) => forgotPassword(),
+          reverseTransitionDuration: const Duration(
+            milliseconds: 60,
+          ),
+          transitionsBuilder: (_, animation, __, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
 
     case RoutesName.verification:
         return PageRouteBuilder(

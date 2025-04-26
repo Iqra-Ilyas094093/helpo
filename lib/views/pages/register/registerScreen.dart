@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/auth/emailAuthentication.dart';
-import 'package:login_design/screens/pages/login/loginScreen.dart';
-import 'package:login_design/screens/pages/login/parts/divider.dart';
-import 'package:login_design/screens/pages/login/parts/googleCard.dart';
-import 'package:login_design/screens/pages/login/parts/passwordField.dart';
-import 'package:login_design/screens/pages/register/parts/registerField.dart';
-import 'package:login_design/screens/pages/verification/parts/registerButton.dart';
-import 'package:login_design/screens/pages/verification/parts/topHeader.dart';
 import 'package:login_design/utilites/colors.dart';
 import 'package:login_design/utilites/validators.dart';
 import 'package:login_design/view_models/auth_view_model.dart';
+import 'package:login_design/views/pages/register/parts/registerField.dart';
 import 'package:provider/provider.dart';
 
+import '../../../utilites/routes/routes_name.dart';
 import '../../../utilites/utils.dart';
 import '../homeScreen/homeScreen.dart';
+import '../login/parts/divider.dart';
+import '../login/parts/googleCard.dart';
+import '../login/parts/passwordField.dart';
+import '../login/parts/topheader.dart';
+import '../verification/parts/registerButton.dart';
 
 class registerScreen extends StatefulWidget {
   registerScreen({super.key});
@@ -123,21 +123,7 @@ class _registerScreenState extends State<registerScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).push(
-                          PageRouteBuilder(
-                            transitionDuration: Duration(milliseconds: 100),
-                            pageBuilder: (_, __, ___) => loginScreen(),
-                            reverseTransitionDuration: const Duration(
-                              milliseconds: 60,
-                            ),
-                            transitionsBuilder: (_, animation, __, child) {
-                              return FadeTransition(
-                                opacity: animation,
-                                child: child,
-                              );
-                            },
-                          ),
-                        );
+                        Navigator.pushNamed(context, RoutesName.login);
                       },
                       child: Text(
                         ' Login',
@@ -157,21 +143,7 @@ class _registerScreenState extends State<registerScreen> {
                   onPressed: () async {
                     final userCred = await googleSignIn(context);
                     if (userCred != null) {
-                      Navigator.of(context).pushReplacement(
-                        PageRouteBuilder(
-                          transitionDuration: Duration(milliseconds: 100),
-                          pageBuilder: (_, __, ___) => homeScreen(),
-                          reverseTransitionDuration: const Duration(
-                            milliseconds: 60,
-                          ),
-                          transitionsBuilder: (_, animation, __, child) {
-                            return FadeTransition(
-                              opacity: animation,
-                              child: child,
-                            );
-                          },
-                        ),
-                      );
+                      Navigator.pushReplacementNamed(context, RoutesName.home);
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(

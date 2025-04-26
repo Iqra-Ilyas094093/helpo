@@ -1,12 +1,8 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:login_design/repository/splashServices.dart';
-import 'package:login_design/screens/pages/getStarted/getStarted.dart';
-import 'package:login_design/screens/pages/login/loginScreen.dart';
-import 'package:login_design/screens/pages/register/registerScreen.dart';
-import 'package:login_design/screens/pages/verification/routes/routes.dart';
-import 'package:login_design/screens/pages/wrapper/wrapper.dart';
 import 'package:lottie/lottie.dart';
+
+import 'login/loginScreen.dart';
 
 class splashScreen extends StatefulWidget {
   const splashScreen({super.key});

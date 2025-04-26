@@ -1,12 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:login_design/screens/pages/getStarted/parts/utility.dart';
-import 'package:login_design/screens/pages/login/loginScreen.dart';
-import 'package:login_design/screens/pages/verification/parts/registerButton.dart';
-import 'package:login_design/screens/pages/verification/routes/routes.dart';
+import 'package:login_design/views/pages/getStarted/parts/utility.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../utilites/colors.dart';
+import '../login/loginScreen.dart';
+import '../verification/parts/registerButton.dart';
 
 class getStarted extends StatefulWidget {
   const getStarted({super.key});

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_design/screens/pages/verification/routes/routes.dart';
 import 'package:pinput/pinput.dart';
+
+import '../../../../utilites/colors.dart';
 
 class otpPinPut extends StatelessWidget {
   TextEditingController otpController;
