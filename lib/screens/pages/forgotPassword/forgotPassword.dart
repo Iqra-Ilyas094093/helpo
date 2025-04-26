@@ -2,8 +2,10 @@ import 'package:login_design/screens/pages/login/loginScreen.dart';
 import 'package:login_design/screens/pages/register/parts/registerField.dart';
 import 'package:login_design/screens/pages/verification/routes/routes.dart';
 import 'package:login_design/utilites/validators.dart';
+import 'package:provider/provider.dart';
 
 import '../../../auth/emailAuthentication.dart';
+import '../../../view_models/auth_view_model.dart';
 
 class forgotPassword extends StatelessWidget {
   FocusNode emailFocus = FocusNode();
@@ -13,6 +15,7 @@ class forgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
+    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -43,13 +46,11 @@ class forgotPassword extends StatelessWidget {
               SizedBox(height: 30.h),
               registerButton(
                 text: 'Reset Password',
-                ontap: () async {
-                  await resetPassword(
-                    emailController.text.toString(),
-                    context,
-                  ).then((onValue) {
-                    Navigator.pop(context);
-                  });
+                ontap: () async{
+                  Map data = {
+                    "email":emailController.text,
+                  };
+                  authViewModel.forgotPasswordApi(data, context);
                 },
               ),
             ],

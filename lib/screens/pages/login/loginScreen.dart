@@ -13,10 +13,14 @@ import 'package:login_design/screens/pages/login/parts/topheader.dart';
 import 'package:login_design/screens/pages/register/registerScreen.dart';
 import 'package:login_design/screens/pages/verification/parts/registerButton.dart';
 import 'package:login_design/screens/pages/verification/verificationScreen.dart';
-import 'package:login_design/screens/pages/wrapper/wrapper.dart';
 import 'package:login_design/utilites/colors.dart';
 import 'package:login_design/utilites/customSnackbar.dart';
+import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/utilites/validators.dart';
+import 'package:login_design/view_models/auth_view_model.dart';
+import 'package:provider/provider.dart';
+
+import '../../../utilites/utils.dart';
 
 class loginScreen extends StatefulWidget {
   const loginScreen({super.key});
@@ -29,12 +33,12 @@ class _loginScreenState extends State<loginScreen> {
   final formKey = GlobalKey<FormState>();
   final emailNode = FocusNode();
   final passwordNode = FocusNode();
-  // final _thirdNode = FocusNode();
   TextEditingController emailController = TextEditingController();
   TextEditingController PasswordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -47,7 +51,7 @@ class _loginScreenState extends State<loginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 25.h),
-                  topHeader(text: 'Helpo'),
+                  topHeader(text: 'Haqdaar'),
                   SizedBox(height: 25.h),
                   Text(
                     "Welcome Back",
@@ -81,29 +85,14 @@ class _loginScreenState extends State<loginScreen> {
                   registerButton(
                     text: 'Login',
                     ontap: () async {
-                      if(formKey.currentState!.validate()){
-                        final success = await login(
-                          emailController.text,
-                          PasswordController.text,
-                          context,
-                        );
-                        if (success) {
-                          Navigator.of(context).push(
-                            PageRouteBuilder(
-                              transitionDuration: Duration(milliseconds: 100),
-                              pageBuilder: (_, __, ___) => homeScreen(),
-                              reverseTransitionDuration: const Duration(
-                                milliseconds: 60,
-                              ),
-                              transitionsBuilder: (_, animation, __, child) {
-                                return FadeTransition(
-                                  opacity: animation,
-                                  child: child,
-                                );
-                              },
-                            ),
-                          );
-                        }
+                      if(emailController.text.isEmpty){
+                        Utils.flushBarErrorMessage('Enter Email', context);
+                      }else if(PasswordController.text.isEmpty){
+                        Utils.flushBarErrorMessage('Enter Password', context);
+                      }else{
+                        Map data = {"email":emailController.text,"password":PasswordController.text};
+                        authViewModel.loginApi(data,context);
+                        print('api hit');
                       }
                     },
                   ),
@@ -123,21 +112,7 @@ class _loginScreenState extends State<loginScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).pushReplacement(
-                            PageRouteBuilder(
-                              transitionDuration: Duration(milliseconds: 100),
-                              pageBuilder: (_, __, ___) => registerScreen(),
-                              reverseTransitionDuration: const Duration(
-                                milliseconds: 60,
-                              ),
-                              transitionsBuilder: (_, animation, __, child) {
-                                return FadeTransition(
-                                  opacity: animation,
-                                  child: child,
-                                );
-                              },
-                            ),
-                          );
+                          Navigator.pushNamed(context, RoutesName.register);
                         },
                         child: Text(
                           ' Register',

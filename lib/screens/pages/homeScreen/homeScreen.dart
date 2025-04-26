@@ -7,10 +7,26 @@ class homeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange.shade200,
-      body: Center(
-        child: Icon(Icons.home,color: primaryColor,size: 63,),
+      appBar: AppBar(
+        actionsPadding: EdgeInsets.symmetric(horizontal: 10.w),
+        actions: [
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(onPressed: (){}, icon: Icon(Icons.horizontal_split),iconSize: 30.sp,),
+                topHeader(text: 'Haqdaar'),
+                CircleAvatar(
+                  radius: 15.r,
+                  child: Icon(Icons.person_2_outlined),
+                  backgroundColor: Colors.grey,
+                )
+              ],
+            ),
+          )
+        ],
       ),
+      body: Text('data')
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/auth/emailAuthentication.dart';
+import 'package:login_design/models/userModel/userModel.dart';
 import 'package:login_design/screens/pages/homeScreen/homeScreen.dart';
 import 'package:login_design/screens/pages/verification/parts/otpForm.dart';
 import 'package:login_design/screens/pages/verification/parts/pinputform.dart';
@@ -13,11 +14,12 @@ import 'package:login_design/screens/pages/verification/parts/sentOTPcode.dart';
 import 'package:login_design/screens/pages/verification/parts/topHeader.dart';
 import 'package:login_design/utilites/colors.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
+
+import '../../../view_models/auth_view_model.dart';
 
 class verificationScreen extends StatefulWidget {
-  String trimEmail;
-  verificationScreen({super.key,required this.trimEmail});
-
+  verificationScreen({super.key,});
   @override
   State<verificationScreen> createState() => _verificationScreenState();
 }
@@ -81,6 +83,7 @@ class _verificationScreenState extends State<verificationScreen> {
   @override
   Widget build(BuildContext context) {
     TextEditingController otpController = TextEditingController();
+    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -108,20 +111,19 @@ class _verificationScreenState extends State<verificationScreen> {
                   style: TextStyle(fontSize: 14.sp, color: primaryColor),
                 ),
                 SizedBox(height: 10.h),
-                sentOTPcode(text: widget.trimEmail,),
+                sentOTPcode(text:'user',),
                 SizedBox(height: 30.h),
                 resendCode(onPressed: (){_canResendEmail?sendVerificationEmail(context):null;},),
                 SizedBox(height: 15.h),
                 registerButton(
                   text: 'Register',
                   ontap: () async{
-                    bool success =await _checkEmailVerifiedPeriodically();
-                    if(success){
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => homeScreen()),
-                      );
-                    }
+                    Map data = {
+                      "otp": otpController.text,
+                      "user_id": 18,
+                    };
+                    authViewModel.otpVerificationApi(data, context);
+
                   },
                 ),
               ],

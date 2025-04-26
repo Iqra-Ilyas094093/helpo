@@ -8,12 +8,12 @@ import 'package:login_design/screens/pages/login/parts/passwordField.dart';
 import 'package:login_design/screens/pages/register/parts/registerField.dart';
 import 'package:login_design/screens/pages/verification/parts/registerButton.dart';
 import 'package:login_design/screens/pages/verification/parts/topHeader.dart';
-import 'package:login_design/screens/pages/verification/verificationScreen.dart';
-import 'package:login_design/screens/pages/wrapper/wrapper.dart';
 import 'package:login_design/utilites/colors.dart';
-import 'package:login_design/utilites/customSnackbar.dart';
 import 'package:login_design/utilites/validators.dart';
+import 'package:login_design/view_models/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
+import '../../../utilites/utils.dart';
 import '../homeScreen/homeScreen.dart';
 
 class registerScreen extends StatefulWidget {
@@ -36,6 +36,7 @@ class _registerScreenState extends State<registerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -87,32 +88,22 @@ class _registerScreenState extends State<registerScreen> {
                   ontap: () async {
                     if (passwordController.text ==
                         confirmPasswordController.text) {
-
-                      final success = await register(
-                        context,
-                        emailController.text,
-                        passwordController.text,
-                      );
-                      if (success) {
-                        Navigator.of(context).pushReplacement(
-                          PageRouteBuilder(
-                            transitionDuration: Duration(milliseconds: 100),
-                            pageBuilder: (_, __, ___) => verificationScreen(trimEmail: emailController.text.toString().substring(4),),
-                            reverseTransitionDuration: const Duration(
-                              milliseconds: 60,
-                            ),
-                            transitionsBuilder: (_, animation, __, child) {
-                              return FadeTransition(
-                                opacity: animation,
-                                child: child,
-                              );
-                            },
-                          ),
-                        );
+                      if(emailController.text.isEmpty){
+                        Utils.flushBarErrorMessage('Enter Email', context);
+                      }else if(passwordController.text.isEmpty){
+                        Utils.flushBarErrorMessage('Enter password', context);
+                      }
+                      else{
+                        Map data = {
+                          "name":usernameController.text,
+                          "email":emailController.text,
+                          "password":passwordController.text,
+                        };
+                        authViewModel.registerApi(data, context);
                       }
                     }
                      else {
-                      showSnackbar(context, 'Passwords Not Matched');
+                      Utils.flushBarErrorMessage('Passwords Not Matched', context);
                     }
                   },
                 ),
@@ -194,7 +185,6 @@ class _registerScreenState extends State<registerScreen> {
                           content: Text("Sign in cancelled or failed"),
                         ),
                       );
-
                     }
                   },
                 ),

@@ -20,7 +20,7 @@ class wrapper extends StatelessWidget {
           if(user.emailVerified){
             return homeScreen();
           }else{
-            return verificationScreen(trimEmail: 'user',);
+            return verificationScreen();
           }
         }
         return getStarted();
