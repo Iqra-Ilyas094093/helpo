@@ -5,12 +5,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserViewModel with ChangeNotifier{
   Future<bool> saveUser(OtpResponse response)async{
     final SharedPreferences sp =await SharedPreferences.getInstance();
-    sp.setBool('success',response.success);
-    sp.setString('message', response.message);
-    sp.setString('token', response.data.token.toString());
-    sp.setInt("user_id", response.data.userId);
-    sp.setBool("verified", response.data.verified);
-    sp.setString("email", response.data.email);
+    await sp.setBool('success',response.success);
+    await sp.setString('message', response.message);
+    await sp.setString('token', response.data.token.toString());
+    await sp.setInt("user_id", response.data.userId);
+    await sp.setBool("verified", response.data.verified);
+    await sp.setString("email", response.data.email);
     notifyListeners();
     return true;
   }
@@ -30,13 +30,5 @@ class UserViewModel with ChangeNotifier{
     final SharedPreferences sp = await SharedPreferences.getInstance();
     return sp.clear();
   }
-
-  Future<void> saveUserToken(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', token);
-  }
-
-
-
 
 }

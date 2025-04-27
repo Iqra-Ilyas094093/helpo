@@ -21,7 +21,7 @@ class customizedTextField extends StatelessWidget {
           contentPadding: EdgeInsets.only(top: 8,left: 8),
           hintText: '',
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.r),
+            borderRadius: BorderRadius.circular(12.r),
           ),
           filled: true,
           suffixIcon: IconButton(onPressed: onPressIcon, icon: Icon(icon)),

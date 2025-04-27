@@ -51,6 +51,7 @@ dependencies:
   another_flushbar: ^1.12.30
   fluttertoast: ^8.2.12
   shared_preferences: ^2.5.3
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:

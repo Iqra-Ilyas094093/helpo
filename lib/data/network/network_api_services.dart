@@ -55,24 +55,30 @@ class NetworkApiService implements BaseApiServices {
     return responseJson ;
   }
 
-  dynamic returnResponse (http.Response response){
+  dynamic returnResponse (http.Response response) {
     if (kDebugMode) {
       print(response.statusCode);
     }
-    switch(response.statusCode){
-      case 200:
-        dynamic responseJson = jsonDecode(response.body);
-        return responseJson ;
-      case 400:
-        throw BadRequestException(response.body.toString());
-      case 401:
-      case 500:
-      case 404:
-        throw UnauthorisedException(response.body.toString());
-      default:
-        throw FetchDataException('Error occured while communicating with server');
-
-    }
+    return response;
+    //   switch(response.statusCode){
+    //     case 200:
+    //       dynamic responseJson = jsonDecode(response.body);
+    //       print(responseJson);
+    //       return responseJson ;
+    //     case 400:
+    //       throw BadRequestException(response.body.toString());
+    //     case 401:
+    //       throw BadRequestException(response.body.toString());
+    //       case 422:
+    //       throw BadRequestException(response.body.toString());
+    //     case 500:
+    //       throw BadRequestException(response.body.toString());
+    //     case 404:
+    //       throw UnauthorisedException(response.body.toString());
+    //     default:
+    //       throw FetchDataException('Error occured while communicating with server');
+    //
+    //   }
+    // }
   }
-
 }

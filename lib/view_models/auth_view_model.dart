@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:login_design/models/userModel/userModel.dart';
@@ -9,43 +11,54 @@ import '../utilites/utils.dart';
 
 class AuthViewModel with ChangeNotifier {
   final _myRepo = AuthHttpApiRepository();
+  TextEditingController emailController = TextEditingController();
 
   Future<void> loginApi(dynamic data, context) async {
-    await _myRepo.loginApi(data).then((value) {
-      Utils.flushBarErrorMessage(value.toString(), context);
-      // Navigator.pushReplacementNamed(context, RoutesName.verification);
+    _myRepo.loginApi(data).then((value) {
+      if(value ==  null) return;
+      if(value.statusCode == 200){
+        Utils.flushBarErrorMessage(jsonDecode(value.body)["message"].toString(), context);
+        Navigator.pushReplacementNamed(context, RoutesName.verification);
+      }else{
+        Utils.flushBarErrorMessage(jsonDecode(value.body)["message"].toString(), context);
+      }
       print(value.toString());
     }).onError((error, stackTrace) {
-      // Utils.flushBarErrorMessage(error.toString(), context);
-      // print(error.toString());
-      // print(stackTrace.toString());
+      Utils.flushBarErrorMessage(error.toString(), context);
+      print(error.toString());
+      print(stackTrace.toString());
     });
   }
 
 
   Future<void> registerApi(dynamic data,context) async {
     _myRepo.registerApi(data).then((value) {
-    if(kDebugMode){
-      Utils.flushBarErrorMessage('Register Successfully', context);
-      Navigator.pushNamed(context, RoutesName.verification);
+      if(value ==null) return;
+      if(value.statusCode == 200) {
+        Utils.flushBarErrorMessage('Register Successfully', context);
+        Navigator.pushNamed(context, RoutesName.verification);
+      }
       print(value.toString());
-    }
     }).onError((error, stackTrace) {
-      if(kDebugMode){
+
         Utils.flushBarErrorMessage(error.toString(), context);
         print(error.toString());
         print(stackTrace.toString());
-      }
+
     });
   }
 
   Future<void> otpVerificationApi(dynamic data,context) async {
     _myRepo.otpVerificationApi(data).then((value) {
-    if(kDebugMode){
-      Utils.flushBarErrorMessage('otp Verified', context);
-      Navigator.pushReplacementNamed(context, RoutesName.home);
+      // if(value == null) return;
+      if(value.statusCode == 200){
+        Utils.flushBarErrorMessage('otp Verified', context);
+        Navigator.pushReplacementNamed(context, RoutesName.home);
+      }else{
+        Utils.flushBarErrorMessage(jsonDecode(value.body)["message"].toString(), context);
+      }
+
       print(value.toString());
-    }
     }).onError((error, stackTrace) {
       if(kDebugMode){
         Utils.flushBarErrorMessage(error.toString(), context);

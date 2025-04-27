@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:login_design/views/pages/homeScreen/parts/doggerfile.dart';
 import '../login/parts/topheader.dart';
 
 class homeScreen extends StatelessWidget {
@@ -27,7 +28,8 @@ class homeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Text('data')
+      body:Text("data"),
+      bottomNavigationBar: DockingBar(),
     );
   }
 }

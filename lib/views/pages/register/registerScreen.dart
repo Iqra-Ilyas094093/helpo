@@ -29,10 +29,11 @@ class _registerScreenState extends State<registerScreen> {
   final emailNode = FocusNode();
   final passwordNode = FocusNode();
   final confirmPasswordNode = FocusNode();
-  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
+  String? selectedValue;
+  final List<String> items = ['Donor', 'Receiver',];
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +47,9 @@ class _registerScreenState extends State<registerScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 25.h),
+                SizedBox(height: 20.h),
                 topHeader(text: 'Register'),
-                SizedBox(height: 25.h),
+                SizedBox(height: 20.h),
                 Text(
                   "Let's Get Started ",
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -69,26 +70,57 @@ class _registerScreenState extends State<registerScreen> {
                   hintText: 'Enter Name',
                   icon: Icons.person_2_outlined,
                 ),
-                SizedBox(height: 18.h),
+                SizedBox(height: 16.h),
                 registerField(
                   node1: emailNode,
                   node2: passwordNode,
                   validator: validateEmail,
-                  controller: emailController,
+                  controller: authViewModel.emailController,
                   hintText: 'Enter Email',
                   icon: Icons.email_outlined,
                 ),
-                SizedBox(height: 18.h),
+                SizedBox(height: 16.h),
                 passwordField(controller: passwordController, obscure: true, text: 'Enter Password',node2: confirmPasswordNode,node1: passwordNode,),
-                SizedBox(height: 18.h),
+                SizedBox(height: 16.h),
                 passwordField(controller: confirmPasswordController, obscure: true, text: 'Confirm Password',node1: confirmPasswordNode,node2: confirmPasswordNode,),
-                SizedBox(height: 18.h),
+                SizedBox(height: 16.h),
+                DropdownButtonFormField<String>(
+                  isDense: true,
+                  isExpanded: true,
+                  value: selectedValue,
+                  alignment: AlignmentDirectional.bottomStart,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w),
+                    filled: true,
+                    fillColor:Colors.orange.shade50,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: primaryColor, width: 2),
+                  ),
+                  ),
+                  hint: Text("Select your role"),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedValue = newValue!;
+                    });
+                  },
+                  items: items.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+                SizedBox(height: 16.h),
                 registerButton(
                   text: 'Register',
                   ontap: () async {
                     if (passwordController.text ==
                         confirmPasswordController.text) {
-                      if(emailController.text.isEmpty){
+                      if(authViewModel.emailController.text.isEmpty){
                         Utils.flushBarErrorMessage('Enter Email', context);
                       }else if(passwordController.text.isEmpty){
                         Utils.flushBarErrorMessage('Enter password', context);
@@ -96,8 +128,9 @@ class _registerScreenState extends State<registerScreen> {
                       else{
                         Map data = {
                           "name":usernameController.text,
-                          "email":emailController.text,
+                          "email":authViewModel.emailController,
                           "password":passwordController.text,
+                          "role":selectedValue,
                         };
                         authViewModel.registerApi(data, context);
                       }
@@ -136,7 +169,7 @@ class _registerScreenState extends State<registerScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 15.h),
+                SizedBox(height: 10.h),
                 divider(),
                 SizedBox(height: 15.h),
                 googleCard(

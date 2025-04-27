@@ -1,7 +1,9 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:login_design/views/pages/getStarted/getStarted.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../repository/splashServices.dart';
 import 'login/loginScreen.dart';
 
 class splashScreen extends StatefulWidget {
@@ -28,7 +30,7 @@ class _splashScreenState extends State<splashScreen> {
       backgroundColor: backgroundColor,
       body: AnimatedSplashScreen(
         splash: Image.asset('assets/images/haqdaar.jpeg'),
-        nextScreen: loginScreen(),
+        nextScreen: getStarted(),
         splashIconSize: 300,
       ),
     );

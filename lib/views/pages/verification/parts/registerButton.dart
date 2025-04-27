@@ -16,7 +16,7 @@ class registerButton extends StatelessWidget {
         height: 35.h,
         decoration: BoxDecoration(
           color: primaryColor,
-          borderRadius: BorderRadius.circular(5.r),
+          borderRadius: BorderRadius.circular(12.r),
         ),
         child: Center(
           child: Text(

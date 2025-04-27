@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
             ),
             title: 'Login Ui',
             // home: loginScreen(),
-            initialRoute: RoutesName.splash,
+            initialRoute: RoutesName.home,
             onGenerateRoute: Routes.generateRoute,
           );
         },

@@ -11,6 +11,7 @@ import '../../../view_models/auth_view_model.dart';
 import '../login/parts/topheader.dart';
 
 class verificationScreen extends StatefulWidget {
+
   verificationScreen({super.key,});
   @override
   State<verificationScreen> createState() => _verificationScreenState();
@@ -58,7 +59,7 @@ class _verificationScreenState extends State<verificationScreen> {
                   ontap: () async{
                     Map data = {
                       "otp": otpController.text,
-                      "user_id": 18,
+                      "email": authViewModel.emailController,
                     };
                     authViewModel.otpVerificationApi(data, context);
 
