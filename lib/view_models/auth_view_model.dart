@@ -40,7 +40,6 @@ class AuthViewModel with ChangeNotifier {
       }
       print(value.toString());
     }).onError((error, stackTrace) {
-
         Utils.flushBarErrorMessage(error.toString(), context);
         print(error.toString());
         print(stackTrace.toString());

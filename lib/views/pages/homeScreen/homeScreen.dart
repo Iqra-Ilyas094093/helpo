@@ -1,35 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/views/pages/homeScreen/parts/doggerfile.dart';
-import '../login/parts/topheader.dart';
+import 'package:login_design/views/pages/homeScreen/parts/screenName.dart';
 
-class homeScreen extends StatelessWidget {
+class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
 
   @override
+  State<homeScreen> createState() => _homeScreenState();
+}
+
+class _homeScreenState extends State<homeScreen> {
+  int _currentIndex = 0;
+
+   void _onTabChanged(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actionsPadding: EdgeInsets.symmetric(horizontal: 10.w),
-        actions: [
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(onPressed: (){}, icon: Icon(Icons.horizontal_split),iconSize: 30.sp,),
-                topHeader(text: 'Haqdaar'),
-                CircleAvatar(
-                  radius: 15.r,
-                  child: Icon(Icons.person_2_outlined),
-                  backgroundColor: Colors.grey,
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-      body:Text("data"),
-      bottomNavigationBar: DockingBar(),
+      body:screens[_currentIndex],
+      bottomNavigationBar: DockingBar(onTabChanged: _onTabChanged,),
     );
   }
 }

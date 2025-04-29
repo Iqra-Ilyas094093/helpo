@@ -5,7 +5,8 @@ import '../../../../utilites/colors.dart';
 
 class fieldLabel extends StatelessWidget {
   String text;
-  fieldLabel({super.key,required this.text});
+
+  fieldLabel({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,10 @@ class fieldLabel extends StatelessWidget {
       child: Text(
         text,
         //15 500
-        style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w500,fontSize: 15.sp),
+        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+          fontWeight: FontWeight.bold,
+          fontSize: 17.sp,
+        ),
       ),
     );
   }

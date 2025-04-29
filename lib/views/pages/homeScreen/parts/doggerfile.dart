@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:login_design/utilites/colors.dart';
 
 class DockingBar extends StatefulWidget {
-  const DockingBar({super.key});
+  final Function(int) onTabChanged;
+  DockingBar({super.key,required this.onTabChanged});
 
   @override
   State<DockingBar> createState() => _DockingBarState();
@@ -62,8 +63,8 @@ class _DockingBarState extends State<DockingBar> {
                         tween = Tween(begin: 1.0, end: 1.2);
                         activeIndex = i;
                       });
-                      Widget screen;
-
+                      // Widget screen;
+                      widget.onTabChanged(i);
                     },
                     onHover: (pointer) {
                       setState(() {
@@ -82,7 +83,7 @@ class _DockingBarState extends State<DockingBar> {
                       child: Icon(
                         icons[i],
                         size: 24, // Icon size
-                        color: Colors.black, // Icon color
+                        color: i == activeIndex ? Colors.white : Colors.black, // Icon color
                       ),
                     ),
                   ),

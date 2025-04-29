@@ -30,11 +30,16 @@ class phoneField extends StatelessWidget {
         suffixIcon: Icon(Icons.phone, color: secondaryColor),
         fillColor: Theme.of(context).colorScheme.surface,
         enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.r),
           borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.r),
           borderSide: BorderSide(color: primaryColor, width: 2),
         ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.r)
+        )
       ),
     );
   }

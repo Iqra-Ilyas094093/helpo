@@ -31,10 +31,10 @@ class _passwordFieldState extends State<passwordField> {
         obscureText: widget.obscure,
         controller: widget.controller,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(top: 8,left: 8),
+          contentPadding: EdgeInsets.symmetric(horizontal: 12.h),
           hintText: widget.text,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.r),
+            borderRadius: BorderRadius.circular(12.r),
           ),
           filled: true,
           suffixIcon: IconButton(onPressed: (){
@@ -45,9 +45,14 @@ class _passwordFieldState extends State<passwordField> {
           }, icon: Icon(widget.obscure?Icons.visibility_off_outlined:Icons.visibility_outlined)),
           fillColor: Theme.of(context).colorScheme.surface,
           enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.r),
             borderSide: BorderSide.none,
           ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.r),
+          ),
           focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.r),
             borderSide: BorderSide(color: primaryColor, width: 2),
           ),
         ),

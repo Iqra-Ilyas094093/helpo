@@ -59,7 +59,7 @@ class _verificationScreenState extends State<verificationScreen> {
                   ontap: () async{
                     Map data = {
                       "otp": otpController.text,
-                      "email": authViewModel.emailController,
+                      "email": authViewModel.emailController.text,
                     };
                     authViewModel.otpVerificationApi(data, context);
 

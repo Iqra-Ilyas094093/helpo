@@ -5,6 +5,7 @@ import 'package:login_design/utilites/colors.dart';
 import 'package:login_design/utilites/validators.dart';
 import 'package:login_design/view_models/auth_view_model.dart';
 import 'package:login_design/views/pages/register/parts/registerField.dart';
+import 'package:login_design/views/pages/register/parts/rich%20text.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utilites/routes/routes_name.dart';
@@ -90,18 +91,19 @@ class _registerScreenState extends State<registerScreen> {
                   value: selectedValue,
                   alignment: AlignmentDirectional.bottomStart,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 12.h),
                     filled: true,
-                    fillColor:Colors.orange.shade50,
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.r)),
                     enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.r),
                     borderSide: BorderSide.none,
                   ),
                   focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.r),
                     borderSide: BorderSide(color: primaryColor, width: 2),
                   ),
                   ),
-                  hint: Text("Select your role"),
+                  hint: Text("Select your role",style: Theme.of(context).textTheme.bodyLarge!.copyWith(),),
                   onChanged: (String? newValue) {
                     setState(() {
                       selectedValue = newValue!;
@@ -110,7 +112,7 @@ class _registerScreenState extends State<registerScreen> {
                   items: items.map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
-                      child: Text(value),
+                      child: Text(value,style: Theme.of(context).textTheme.bodyLarge!.copyWith() ,),
                     );
                   }).toList(),
                 ),
@@ -194,27 +196,7 @@ class _registerScreenState extends State<registerScreen> {
                   },
                 ),
                 SizedBox(height: 10.h),
-                SelectableText.rich(
-                  textAlign: TextAlign.center,
-                  TextSpan(
-                    text: 'By Signing to this Account You are accepting our ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      color: secondaryColor,
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'Terms and Conditions',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14.sp,
-                          color: primaryColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                richText(),
               ],
             ),
           ),

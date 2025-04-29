@@ -56,7 +56,6 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
             ),
             title: 'Login Ui',
-            // home: loginScreen(),
             initialRoute: RoutesName.home,
             onGenerateRoute: Routes.generateRoute,
           );

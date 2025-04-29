@@ -65,7 +65,7 @@ class _loginScreenState extends State<loginScreen> {
                   customizedTextField(
                     func: validateEmail,
                     icon: Icons.email_outlined,
-                    controller: emailController,
+                    controller: authViewModel.emailController,
                     onPressIcon: () {},
                   ),
                   SizedBox(height: 18.h),
@@ -80,12 +80,10 @@ class _loginScreenState extends State<loginScreen> {
                   registerButton(
                     text: 'Login',
                     ontap: () async {
-                      if(emailController.text.isEmpty){
-                        Utils.flushBarErrorMessage('Enter Email', context);
-                      }else if(PasswordController.text.isEmpty){
+                      if(PasswordController.text.isEmpty){
                         Utils.flushBarErrorMessage('Enter Password', context);
                       }else{
-                        Map data = {"email":emailController.text,"password":PasswordController.text};
+                        Map data = {"email":authViewModel.emailController.text,"password":PasswordController.text};
                         authViewModel.loginApi(data,context);
                         print('api hit');
                       }
