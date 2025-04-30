@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/utilites/colors.dart';
+import 'package:login_design/views/pages/home/mainMenu.dart';
 import 'package:login_design/views/pages/home/parts/helper.dart';
 import 'package:login_design/views/pages/login/parts/fieldLabel.dart';
 
@@ -152,7 +153,7 @@ class home extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: List.generate(4, (index) {
-                      return popular(image: images[index],text:description[index],);
+                      return popular(image: images[index],text:description[index],descriptionText: descr[index],);
                     }),
                   ),
                 ),
@@ -233,64 +234,82 @@ class categoryModel extends StatelessWidget {
 class popular extends StatelessWidget {
   String image;
   String text;
-  popular({super.key,required this.image,required this.text});
+  String descriptionText;
+  popular({super.key,required this.image,required this.text,required this.descriptionText});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 3.0,).w,
-      child: Card(
-        elevation: 2,
-        child: Container(
-          height: 200.h,
-          width: 230.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14.r),
-            color: Colors.grey.shade200,
+      child: GestureDetector(
+        onTap: (){
+          Navigator.of(context).push(PageRouteBuilder(
+          transitionDuration: Duration(milliseconds: 100),
+          pageBuilder: (_, __, ___) => mainMenu(image: image, title: text, descriptionText: descriptionText),
+          reverseTransitionDuration: const Duration(
+          milliseconds: 60,
           ),
-          child: Column(
-            children: [
-              Container(
-                height: 100.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(14.r),
-                    topRight: Radius.circular(14.r),
+          transitionsBuilder: (_, animation, __, child) {
+          return FadeTransition(
+          opacity: animation,
+          child: child,
+          );
+          },
+          ));
+        },
+        child: Card(
+          elevation: 2,
+          child: Container(
+            height: 200.h,
+            width: 230.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14.r),
+              color: Colors.grey.shade200,
+            ),
+            child: Column(
+              children: [
+                Container(
+                  height: 100.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(14.r),
+                      topRight: Radius.circular(14.r),
+                    ),
+                    color: primaryColor,
                   ),
-                  color: primaryColor,
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.only(topRight: Radius.circular(14),topLeft: Radius.circular(14)),
+                      child: Image.asset(image,fit: BoxFit.fitWidth,)),
                 ),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.only(topRight: Radius.circular(14),topLeft: Radius.circular(14)),
-                    child: Image.asset(image,fit: BoxFit.fitWidth,)),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 4.0, top: 5).w.h,
-                child: Text(
-                  text,
-                  softWrap: true,
-                  maxLines: 2,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.headlineSmall!.copyWith(fontSize: 14.sp,color: Colors.black),
+                Padding(
+                  padding: const EdgeInsets.only(left: 4.0, top: 5).w.h,
+                  child: Text(
+                    text,
+                    softWrap: true,
+                    maxLines: 2,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineSmall!.copyWith(fontSize: 14.sp,color: Colors.black),
+                  ),
                 ),
-              ),
 
-              Slider(
-                value: 0.5,
-                onChanged: (onChanged) {},
-                thumbColor: primaryColor,
-                activeColor: primaryColor,
-                inactiveColor: Colors.grey,
-              ),
-              Text(
-                "\$4,345 fund raised from \$9,000",
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  fontSize: 10.sp,
-                  color: Colors.grey.shade700,
+                Slider(
+                  value: 0.5,
+                  onChanged: (onChanged) {},
+                  thumbColor: primaryColor,
+                  activeColor: primaryColor,
+                  inactiveColor: Colors.grey,
                 ),
-              ),
-            ],
+                Text(
+                  "\$4,345 fund raised from \$9,000",
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    fontSize: 10.sp,
+                    color: Colors.grey.shade700,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

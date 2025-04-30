@@ -7,6 +7,10 @@ import 'package:login_design/utilites/routes/routes.dart';
 import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/view_models/auth_view_model.dart';
 import 'package:login_design/view_models/user_view_model.dart';
+import 'package:login_design/views/pages/home/donateAmount.dart';
+import 'package:login_design/views/pages/home/home.dart';
+import 'package:login_design/views/pages/home/mainMenu.dart';
+import 'package:login_design/views/pages/home/paymentMethods.dart';
 import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
@@ -56,7 +60,8 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
             ),
             title: 'Login Ui',
-            initialRoute: RoutesName.home,
+            // home: paymentMethod(),
+            initialRoute: RoutesName.splash,
             onGenerateRoute: Routes.generateRoute,
           );
         },
