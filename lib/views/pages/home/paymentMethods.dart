@@ -90,7 +90,7 @@ class _paymentMethodState extends State<paymentMethod> {
                   final method = methods[index];
                   return PaymentMethodTile(
                     methodName: method['name'] as String,
-                    icon: method['icon'] as IconData,
+                    icon: method['icon'] as String,
                     isSelected: selectedMethod == index,
                     onTap: () {
                       setState(() {

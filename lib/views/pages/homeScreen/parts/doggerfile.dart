@@ -14,7 +14,7 @@ class _DockingBarState extends State<DockingBar> {
 
   List<IconData> icons = [
     Icons.home,
-    Icons.search,
+    Icons.handshake,
     Icons.menu,
     Icons.notifications,
     Icons.person

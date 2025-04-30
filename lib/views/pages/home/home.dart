@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/utilites/colors.dart';
+import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/views/pages/home/mainMenu.dart';
 import 'package:login_design/views/pages/home/parts/helper.dart';
 import 'package:login_design/views/pages/login/parts/fieldLabel.dart';
@@ -14,128 +15,131 @@ class home extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    height: 110.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: primaryColor,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30.r),
-                        bottomRight: Radius.circular(30.r),
-                      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 110.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: primaryColor,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30.r),
+                      bottomRight: Radius.circular(30.r),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(
-                          vertical: 28,
-                          horizontal: 15,
-                        ).w.h,
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 26.r,
-                          backgroundColor: primaryColor,
-                          backgroundImage: AssetImage('assets/images/prof.jpg',),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(
+                        vertical: 28,
+                        horizontal: 15,
+                      ).w.h,
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 26.r,
+                        backgroundColor: primaryColor,
+                        backgroundImage: AssetImage('assets/images/prof.jpg',),
+                      ),
+                      SizedBox(width: 10.w),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          fieldLabel(text: 'Hello,'),
+                          fieldLabel(text: 'Talawish Sikandar'),
+                        ],
+                      ),
+                      Spacer(),
+                      Container(
+                        height: 30.h,
+                        width: 30.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.grey.shade100,
                         ),
-                        SizedBox(width: 10.w),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            fieldLabel(text: 'Hello,'),
-                            fieldLabel(text: 'Talawish Sikandar'),
-                          ],
-                        ),
-                        Spacer(),
-                        Container(
-                          height: 30.h,
-                          width: 30.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: Colors.grey.shade100,
-                          ),
-                          child: Icon(Icons.more_vert,color: Colors.black,),
-                        ),
-                      ],
+                        child: Icon(Icons.more_vert,color: Colors.black,),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10).w.h,
+              child: TextFormField(
+                controller: searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search Compaigns',
+                  prefixIcon: Icon(Icons.search),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.r),
+                    borderSide: BorderSide(color: primaryColor, width: 2.w),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.r),
+                    borderSide: BorderSide(color: Colors.grey, width: 1.w),
+                  ),
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.r),
+                    borderSide: BorderSide(color: Colors.orange, width: 1.w),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.r),
+                    borderSide: BorderSide(width: 20.w, color: primaryColor),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2).w.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Categories',
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 19.sp,
                     ),
+                    textAlign: TextAlign.start,
                   ),
                 ],
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10).w.h,
-                child: TextFormField(
-                  controller: searchController,
-                  decoration: InputDecoration(
-                    hintText: 'Search Compaigns',
-                    prefixIcon: Icon(Icons.search),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.r),
-                      borderSide: BorderSide(color: primaryColor, width: 2.w),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: List.generate(4, (index) {
+                  return categoryModel(name: names[index],color: colors[index],icon: icon[index],);
+                }),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8).w.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Most Popular',
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 19.sp,
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.r),
-                      borderSide: BorderSide(color: Colors.grey, width: 1.w),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.r),
-                      borderSide: BorderSide(color: Colors.orange, width: 1.w),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.r),
-                      borderSide: BorderSide(width: 20.w, color: primaryColor),
-                    ),
+                    textAlign: TextAlign.start,
                   ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2).w.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Categories',
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 19.sp,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(4, (index) {
-                    return categoryModel(name: names[index],color: colors[index],icon: icon[index],);
-                  }),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8).w.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Most Popular',
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 19.sp,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                    Text(
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, RoutesName.popularCompaigns);
+                    },
+                    child: Text(
                       'View All',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w300,
@@ -143,52 +147,52 @@ class home extends StatelessWidget {
                         color: Colors.grey.shade700,
                       ),
                     ),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4.0).w,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(4, (index) {
-                      return popular(image: images[index],text:description[index],descriptionText: descr[index],);
-                    }),
                   ),
-                ),
+                ],
               ),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6).w.h,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0).w,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Top Donors',
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 19.sp,
-                      ),
-                      textAlign: TextAlign.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: List.generate(4, (index) {
+                    return popular(image: images[index],text:description[index],descriptionText: descr[index],);
+                  }),
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+              const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6).w.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Top Donors',
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 19.sp,
                     ),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4.0).w,
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    children: List.generate(5, (index) {
-                      return topDonors(image: profilePic[index],name: topDonorName[index],bio: donorsBio[index],);
-                    }),
+                    textAlign: TextAlign.start,
                   ),
+                ],
+              ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0).w,
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  children: List.generate(5, (index) {
+                    return topDonors(image: profilePic[index],name: topDonorName[index],bio: donorsBio[index],);
+                  }),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -258,7 +262,7 @@ class popular extends StatelessWidget {
           ));
         },
         child: Card(
-          elevation: 2,
+          elevation: 5,
           child: Container(
             height: 200.h,
             width: 230.w,
@@ -280,7 +284,7 @@ class popular extends StatelessWidget {
                   ),
                   child: ClipRRect(
                       borderRadius: BorderRadius.only(topRight: Radius.circular(14),topLeft: Radius.circular(14)),
-                      child: Image.asset(image,fit: BoxFit.fitWidth,)),
+                      child: Image.asset(image,fit: BoxFit.cover,)),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 4.0, top: 5).w.h,
@@ -290,7 +294,7 @@ class popular extends StatelessWidget {
                     maxLines: 2,
                     style: Theme.of(
                       context,
-                    ).textTheme.headlineSmall!.copyWith(fontSize: 14.sp,color: Colors.black),
+                    ).textTheme.headlineSmall!.copyWith(fontSize: 13.sp,color: Colors.black),
                   ),
                 ),
 

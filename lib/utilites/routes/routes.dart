@@ -3,6 +3,7 @@ import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/views/pages/home/donateAmount.dart';
 import 'package:login_design/views/pages/home/home.dart';
 import 'package:login_design/views/pages/home/paymentMethods.dart';
+import 'package:login_design/views/pages/popularCompaigns/popularCompaigns.dart';
 import '../../views/pages/forgotPassword/forgotPassword.dart';
 import '../../views/pages/getStarted/getStarted.dart';
 import '../../views/pages/homeScreen/homeScreen.dart';
@@ -15,6 +16,20 @@ class Routes {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch(settings.name){
+      case RoutesName.popularCompaigns:
+        return PageRouteBuilder(
+          transitionDuration: Duration(milliseconds: 100),
+          pageBuilder: (_, __, ___) => Popularcompaigns(),
+          reverseTransitionDuration: const Duration(
+            milliseconds: 60,
+          ),
+          transitionsBuilder: (_, animation, __, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
       case RoutesName.paymentMethod:
         return PageRouteBuilder(
           transitionDuration: Duration(milliseconds: 100),

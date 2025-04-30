@@ -4,7 +4,7 @@ import 'package:login_design/utilites/colors.dart';
 
 class PaymentMethodTile extends StatelessWidget {
   final String methodName;
-  final IconData icon;
+  final String icon;
   final bool isSelected;
   final VoidCallback onTap;
 
@@ -30,7 +30,10 @@ class PaymentMethodTile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Row(
                 children: [
-                  Icon(icon, size: 28),
+                  SizedBox(
+                      height: 30,
+                      width: 40,
+                      child: Image.asset(icon,)),
                   const SizedBox(width: 16),
                   Expanded(
                     child: Text(

@@ -11,6 +11,7 @@ class RoutesName {
   //home screen routes name
   static const String home = 'home_screen' ;
   static const String donateAmount = 'donateAmount_screen' ;
+  static const String popularCompaigns = 'popularCompaigns_screen' ;
   static const String paymentMethod = 'payment_method' ;
   static const String mainhome = 'mainhome_screen' ;
   static const String verification = 'verificationScreen' ;

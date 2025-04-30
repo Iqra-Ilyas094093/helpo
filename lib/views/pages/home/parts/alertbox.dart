@@ -42,7 +42,7 @@ void showDonationSuccessDialog(BuildContext context) {
                 ),
               ),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, RoutesName.mainhome); // Close the dialog
+                Navigator.pushReplacementNamed(context, RoutesName.home); // Close the dialog
               },
               child: Text('Back To Home',style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,color: Colors.white,

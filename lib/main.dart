@@ -11,6 +11,11 @@ import 'package:login_design/views/pages/home/donateAmount.dart';
 import 'package:login_design/views/pages/home/home.dart';
 import 'package:login_design/views/pages/home/mainMenu.dart';
 import 'package:login_design/views/pages/home/paymentMethods.dart';
+import 'package:login_design/views/pages/homeScreen/homeScreen.dart';
+import 'package:login_design/views/pages/menuScreen/menuScreen.dart';
+import 'package:login_design/views/pages/menuScreen/parts/RandomBarChart.dart';
+import 'package:login_design/views/pages/menuScreen/parts/card.dart';
+import 'package:login_design/views/pages/notificationScreen/notificationScreen.dart';
 import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
@@ -42,7 +47,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.system,
             darkTheme: ThemeData.dark().copyWith(
               brightness: Brightness.dark,
-              scaffoldBackgroundColor: Colors.black12,
+              scaffoldBackgroundColor: Colors.black26,
               textTheme: GoogleFonts.poppinsTextTheme().copyWith(
                 bodyLarge: GoogleFonts.poppins(color: Colors.white),
                 titleLarge: GoogleFonts.poppins(color: Colors.white),
@@ -60,7 +65,7 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
             ),
             title: 'Login Ui',
-            // home: paymentMethod(),
+            // home: menuScreen(),
             initialRoute: RoutesName.splash,
             onGenerateRoute: Routes.generateRoute,
           );
