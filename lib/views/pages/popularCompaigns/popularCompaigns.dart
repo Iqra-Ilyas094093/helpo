@@ -15,14 +15,17 @@ class Popularcompaigns extends StatelessWidget {
             SizedBox(height: 12.h,),
             Center(
               child: Text(
-                'Popular Comapaigns',
+                'Popular Compaigns',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 23.sp,
                 ),
               ),
             ),
-            Divider(color: Colors.grey.shade300,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Divider(color: Colors.grey.shade500,),
+            ),
             SizedBox(height: 12.h,),
             Expanded(
               child: GridView.builder(

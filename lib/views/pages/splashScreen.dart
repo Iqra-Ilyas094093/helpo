@@ -1,6 +1,11 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:login_design/views/pages/getStarted/getStarted.dart';
+import 'package:login_design/views/pages/home/home.dart';
+import 'package:login_design/views/pages/homeScreen/homeScreen.dart';
+import 'package:login_design/views/pages/menuScreen/menuScreen.dart';
+import 'package:login_design/views/pages/notificationScreen/notificationScreen.dart';
+import 'package:login_design/views/pages/profileScreen/profileScreen.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../repository/splashServices.dart';
@@ -30,7 +35,7 @@ class _splashScreenState extends State<splashScreen> {
       backgroundColor: backgroundColor,
       body: AnimatedSplashScreen(
         splash: Image.asset('assets/images/haqdaar.jpeg'),
-        nextScreen: getStarted(),
+        nextScreen: homeScreen(),
         splashIconSize: 300,
       ),
     );

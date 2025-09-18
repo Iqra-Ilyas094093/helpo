@@ -54,7 +54,7 @@ class _notificationScreenState extends State<notificationScreen> {
           SizedBox(height: 12.h,),
           Center(
             child: Text(
-              'Notifications',
+              'Notification',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 23.sp,

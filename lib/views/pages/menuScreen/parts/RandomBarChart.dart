@@ -65,11 +65,11 @@ class _RandomBarChartCardState extends State<RandomBarChartCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(10).h.w,
+      margin: const EdgeInsets.all(10).w,
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       child: Padding(
-        padding: const EdgeInsets.all(16).h.w,
+        padding: const EdgeInsets.all(16).w,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -130,7 +130,7 @@ class _RandomBarChartCardState extends State<RandomBarChartCard> {
                   barTouchData: BarTouchData(enabled: false),
                 ),
                 swapAnimationDuration: const Duration(milliseconds: 800),
-                swapAnimationCurve: Curves.easeOutBack,
+                swapAnimationCurve: Curves.fastOutSlowIn,
               ),
             ),
           ],

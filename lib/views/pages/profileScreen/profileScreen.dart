@@ -18,7 +18,7 @@ class profileScreen extends StatelessWidget {
           child: CircleAvatar(
             radius: 70,
             backgroundColor: primaryColor,
-            child: Icon(Icons.person_2_outlined),
+            backgroundImage: AssetImage('assets/images/prof.jpg'),
           ),
         ),
         Padding(
@@ -26,6 +26,7 @@ class profileScreen extends StatelessWidget {
           child: fieldLabel(text: 'Talawish Sikandar'),
         ),
         Text(
+          // workflow094093@gmail.com
           'workflow094093@gmail.com',
           //15 500
           style: Theme.of(context).textTheme.headlineSmall!.copyWith(

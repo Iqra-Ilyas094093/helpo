@@ -23,7 +23,10 @@ class menuScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(color: Colors.grey.shade300,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Divider(color: Colors.grey.shade500,),
+            ),
             SizedBox(height: 12.h,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 12).h.w,

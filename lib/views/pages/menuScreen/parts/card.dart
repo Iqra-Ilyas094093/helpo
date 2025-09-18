@@ -53,6 +53,7 @@ class CreditCardWidget extends StatelessWidget {
                           ),
                         ),
                         Text(
+                          // VISA
                           'VISA',
                           style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: Colors.white,
@@ -63,6 +64,7 @@ class CreditCardWidget extends StatelessWidget {
                       ],
                     ),
                     Text(
+                    // **** **** **** 3456
                       '**** **** **** 3456',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         color: Colors.white,
@@ -76,9 +78,11 @@ class CreditCardWidget extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            // Card Holder
                             Text('Card Holder',
                                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                     color: Colors.white70, fontSize: 12.sp)),
+                            // JOHN DOE
                             Text('JOHN DOE',
                                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                     color: Colors.white,
@@ -89,9 +93,11 @@ class CreditCardWidget extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            // Expires
                             Text('Expires',
                                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                     color: Colors.white70, fontSize: 12.sp)),
+                            // '08/25'
                             Text('08/25',
                                 style: Theme.of(context).textTheme
                                 .titleLarge!.copyWith(
