@@ -31,7 +31,7 @@ class profileScreen extends StatelessWidget {
           //15 500
           style: Theme.of(context).textTheme.headlineSmall!.copyWith(
             fontWeight: FontWeight.bold,
-            fontSize: 13.sp,
+            fontSize: 13,
             color: Colors.grey.shade400
           ),
         ),
@@ -74,7 +74,7 @@ class profileTiles extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 12).h.w,
                   child: Text(name,style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.w700,
-                    fontSize: 15.sp,
+                    fontSize: 15,
                     color: Colors.black,
                   ),),
                 ),

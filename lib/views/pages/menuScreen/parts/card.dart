@@ -57,7 +57,7 @@ class CreditCardWidget extends StatelessWidget {
                           'VISA',
                           style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: Colors.white,
-                            fontSize: 28.sp,
+                            fontSize: 28,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -68,7 +68,7 @@ class CreditCardWidget extends StatelessWidget {
                       '**** **** **** 3456',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         color: Colors.white,
-                        fontSize: 22.sp,
+                        fontSize: 22,
                         letterSpacing: 2.0,
                       ),
                     ),
@@ -81,12 +81,12 @@ class CreditCardWidget extends StatelessWidget {
                             // Card Holder
                             Text('Card Holder',
                                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    color: Colors.white70, fontSize: 12.sp)),
+                                    color: Colors.white70, fontSize: 12)),
                             // JOHN DOE
                             Text('JOHN DOE',
                                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                     color: Colors.white,
-                                    fontSize: 15.sp,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold)),
                           ],
                         ),
@@ -96,12 +96,12 @@ class CreditCardWidget extends StatelessWidget {
                             // Expires
                             Text('Expires',
                                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    color: Colors.white70, fontSize: 12.sp)),
+                                    color: Colors.white70, fontSize: 12)),
                             // '08/25'
                             Text('08/25',
                                 style: Theme.of(context).textTheme
                                 .titleLarge!.copyWith(
-                                  fontSize: 15.sp,
+                                  fontSize: 15,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold)),
                           ],

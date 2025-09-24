@@ -29,7 +29,7 @@ class _RandomBarChartCardState extends State<RandomBarChartCard> {
           BarChartRodData(
             toY: 0,
             color: primaryColor,
-            width: 18.w,
+            width: 15,
             borderRadius: BorderRadius.circular(4.r),
           ),
         ],
@@ -49,7 +49,7 @@ class _RandomBarChartCardState extends State<RandomBarChartCard> {
             BarChartRodData(
               toY: value.toDouble(),
               color: primaryColor,
-              width: 18.w,
+              width: 15,
               borderRadius: BorderRadius.only(topLeft: Radius.circular(6.r),topRight: Radius.circular(6.r)),
             ),
           ],
@@ -77,7 +77,7 @@ class _RandomBarChartCardState extends State<RandomBarChartCard> {
               '📊 Weekly Report',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 18.sp,
+                fontSize: 18,
               ),
             ),
             SizedBox(height: 12.h),
@@ -98,7 +98,7 @@ class _RandomBarChartCardState extends State<RandomBarChartCard> {
                           '${value.toInt()}',
                           style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                             fontWeight: FontWeight.w500,
-                            fontSize: 13.sp,
+                            fontSize: 13,
                           ),
                         ),
                       ),
@@ -112,7 +112,7 @@ class _RandomBarChartCardState extends State<RandomBarChartCard> {
                             'D${value.toInt() + 1}',
                             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                               fontWeight: FontWeight.w500,
-                              fontSize: 13.sp,
+                              fontSize: 13,
                             ),
                           ),
                         ),

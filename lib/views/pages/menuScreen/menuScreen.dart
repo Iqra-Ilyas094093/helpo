@@ -19,7 +19,7 @@ class menuScreen extends StatelessWidget {
                 'My Cards',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.bold,
-                  fontSize: 23.sp,
+                  fontSize: 23,
                 ),
               ),
             ),

@@ -18,7 +18,7 @@ class Popularcompaigns extends StatelessWidget {
                 'Popular Compaigns',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.bold,
-                  fontSize: 23.sp,
+                  fontSize: 23,
                 ),
               ),
             ),

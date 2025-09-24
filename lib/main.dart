@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:login_design/screens/pages/splashScreen.dart';
-import 'package:login_design/screens/pages/verification/verificationScreen.dart';
 import 'package:login_design/utilites/colors.dart';
+import 'package:login_design/views/pages/splashScreen.dart';
 
 import 'firebase_options.dart';
 
@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       builder: (_, child) {
-        return MaterialApp(
+        final app = MaterialApp(
           debugShowCheckedModeBanner: false,
-          themeMode: ThemeMode.system,
+          themeMode: ThemeMode.light,
           darkTheme: ThemeData.dark().copyWith(
             brightness: Brightness.dark,
             scaffoldBackgroundColor: Colors.black12,
@@ -55,6 +55,7 @@ class MyApp extends StatelessWidget {
           title: 'Login Ui',
           home: splashScreen(),
         );
+        return kIsWeb?Center(child: SizedBox(width: 390,child: app,),):app;
       },
     );
   }

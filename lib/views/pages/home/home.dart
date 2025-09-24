@@ -15,19 +15,20 @@ class home extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
     return Scaffold(
+      backgroundColor: Colors.white38,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Stack(
               children: [
                 Container(
-                  height: 110.h,
+                  height: 110,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: primaryColor,
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(30.r),
-                      bottomRight: Radius.circular(30.r),
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
                     ),
                   ),
                 ),
@@ -36,15 +37,15 @@ class home extends StatelessWidget {
                       const EdgeInsets.symmetric(
                         vertical: 28,
                         horizontal: 15,
-                      ).w.h,
+                      ),
                   child: Row(
                     children: [
                       CircleAvatar(
-                        radius: 26.r,
+                        radius: 26,
                         backgroundColor: primaryColor,
                         backgroundImage: AssetImage('assets/images/prof.jpg',),
                       ),
-                      SizedBox(width: 10.w),
+                      SizedBox(width: 10),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,8 +56,8 @@ class home extends StatelessWidget {
                       ),
                       Spacer(),
                       Container(
-                        height: 30.h,
-                        width: 30.h,
+                        height: 30,
+                        width: 30,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: Colors.grey.shade100,
@@ -70,34 +71,34 @@ class home extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10).w.h,
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10),
               child: TextFormField(
                 controller: searchController,
                 decoration: InputDecoration(
                   hintText: 'Search Compaigns',
                   prefixIcon: Icon(Icons.search),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
-                    borderSide: BorderSide(color: primaryColor, width: 2.w),
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(color: primaryColor, width: 2),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
-                    borderSide: BorderSide(color: Colors.grey, width: 1.w),
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(color: Colors.grey, width: 1),
                   ),
                   disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
-                    borderSide: BorderSide(color: Colors.orange, width: 1.w),
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(color: Colors.orange, width: 1),
                   ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
-                    borderSide: BorderSide(width: 20.w, color: primaryColor),
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(width: 20, color: primaryColor),
                   ),
                 ),
               ),
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2).w.h,
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -105,7 +106,7 @@ class home extends StatelessWidget {
                     'Categories',
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w500,
-                      fontSize: 19.sp,
+                      fontSize: 19,
                     ),
                     textAlign: TextAlign.start,
                   ),
@@ -123,7 +124,7 @@ class home extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8).w.h,
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -131,7 +132,7 @@ class home extends StatelessWidget {
                     'Most Popular',
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w500,
-                      fontSize: 19.sp,
+                      fontSize: 19,
                     ),
                     textAlign: TextAlign.start,
                   ),
@@ -143,7 +144,7 @@ class home extends StatelessWidget {
                       'View All',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w300,
-                        fontSize: 14.sp,
+                        fontSize: 14,
                         color: Colors.grey.shade700,
                       ),
                     ),
@@ -154,7 +155,7 @@ class home extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0).w,
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: List.generate(4, (index) {
@@ -165,7 +166,7 @@ class home extends StatelessWidget {
             ),
             Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6).w.h,
+              const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -173,7 +174,7 @@ class home extends StatelessWidget {
                     'Top Donors',
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w700,
-                      fontSize: 19.sp,
+                      fontSize: 19,
                     ),
                     textAlign: TextAlign.start,
                   ),
@@ -183,7 +184,7 @@ class home extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0).w,
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: List.generate(5, (index) {
@@ -208,8 +209,8 @@ class categoryModel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90.h,
-      width: 75.w,
+      height: 90,
+      width: 75,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
         color: Colors.orange.shade200.withOpacity(0.6),
@@ -219,14 +220,14 @@ class categoryModel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-              height: 50.h,
-              width: 35.w,
+              height: 50,
+              width: 35,
               child: Image.asset(icon,)),
           Text(
             name,
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.w500,
-              fontSize: 13.sp,
+              fontSize: 13,
             ),
           ),
         ],
@@ -244,7 +245,7 @@ class popular extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 3.0,).w,
+      padding: const EdgeInsets.symmetric(horizontal: 3.0,),
       child: GestureDetector(
         onTap: (){
           Navigator.of(context).push(PageRouteBuilder(
@@ -264,21 +265,21 @@ class popular extends StatelessWidget {
         child: Card(
           elevation: 5,
           child: Container(
-            height: 200.h,
-            width: 230.w,
+            height: 200,
+            width: 230,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14.r),
+              borderRadius: BorderRadius.circular(14),
               color: Colors.grey.shade200,
             ),
             child: Column(
               children: [
                 Container(
-                  height: 100.h,
+                  height: 100,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(14.r),
-                      topRight: Radius.circular(14.r),
+                      topLeft: Radius.circular(14),
+                      topRight: Radius.circular(14),
                     ),
                     color: primaryColor,
                   ),
@@ -287,14 +288,14 @@ class popular extends StatelessWidget {
                       child: Image.asset(image,fit: BoxFit.cover,)),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 4.0, top: 5).w.h,
+                  padding: const EdgeInsets.only(left: 4.0, top: 5),
                   child: Text(
                     text,
                     softWrap: true,
                     maxLines: 2,
                     style: Theme.of(
                       context,
-                    ).textTheme.headlineSmall!.copyWith(fontSize: 13.sp,color: Colors.black),
+                    ).textTheme.headlineSmall!.copyWith(fontSize: 13,color: Colors.black),
                   ),
                 ),
 
@@ -308,7 +309,7 @@ class popular extends StatelessWidget {
                 Text(
                   "\$4,345 fund raised from \$9,000",
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                    fontSize: 10.sp,
+                    fontSize: 10,
                     color: Colors.grey.shade700,
                   ),
                 ),
@@ -330,31 +331,31 @@ class topDonors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0).h.w,
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Card(
         color: Colors.grey.shade300,
         child: SizedBox(
-          height: 60.h,
+          height: 60,
           child: Padding(
             padding: const EdgeInsets.only(left: 10.0),
             child: Row(
               children: [
-                CircleAvatar(radius: 20.r,backgroundColor: Colors.grey,backgroundImage: AssetImage(image),),
+                CircleAvatar(radius: 20,backgroundColor: Colors.grey,backgroundImage: AssetImage(image),),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 12).h.w,
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 12),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(name,style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w500,
-                        fontSize: 15.sp,
+                        fontSize: 15,
                         color: Colors.black,
                       ),),
                       Text(bio
                         ,style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                         fontWeight: FontWeight.w500,
-                        fontSize: 12.sp,
+                        fontSize: 12,
                         color: Colors.grey.shade700
                       ),maxLines: 1,),
                     ],

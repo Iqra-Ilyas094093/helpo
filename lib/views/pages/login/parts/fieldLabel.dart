@@ -17,7 +17,7 @@ class fieldLabel extends StatelessWidget {
         //15 500
         style: Theme.of(context).textTheme.titleLarge!.copyWith(
           fontWeight: FontWeight.bold,
-          fontSize: 17.sp,
+          fontSize: 17,
         ),
       ),
     );

@@ -30,7 +30,7 @@ class NotificationCard extends StatelessWidget {
           title: Column(
             children: [
               CircleAvatar(
-                radius: 30.r,
+                radius: 30,
                 backgroundColor: item.color.withOpacity(0.2),
                 child: Icon(item.icon, size: 30, color: item.color),
               ),
@@ -50,7 +50,7 @@ class NotificationCard extends StatelessWidget {
             item.message,
             textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                fontSize: 15.sp,
+                fontSize: 15,
                 color: Colors.grey.shade500,
               ),
           ),
@@ -67,7 +67,7 @@ class NotificationCard extends StatelessWidget {
               onPressed: () => Navigator.pop(context),
               child:Text("Back",style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 14.sp,
+                fontSize: 14,
                 color: Colors.white,
               ),),
             ),
@@ -95,7 +95,7 @@ class NotificationCard extends StatelessWidget {
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Text(item.message,maxLines: 2,style: Theme.of(context).textTheme.titleLarge!.copyWith(
-          fontSize: 12.sp,color: Colors.grey.shade500
+          fontSize: 12,color: Colors.grey.shade500
         ),),
         trailing: IconButton(
           icon: const Icon(Icons.more_vert), // Dropdown icon (3 dots)
@@ -123,14 +123,14 @@ class NotificationCard extends StatelessWidget {
             "Are you sure you want to delete this notification? This action cannot be undone.",
             style: Theme.of(
               context,
-            ).textTheme.headlineSmall!.copyWith(fontSize: 15.sp,color: Colors.grey.shade500),
+            ).textTheme.headlineSmall!.copyWith(fontSize: 15,color: Colors.grey.shade500),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context), // Close the dialog
               child: Text("Cancel",style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 14.sp,
+                fontSize: 14,
                 color: primaryColor,
               ),),
             ),
@@ -141,7 +141,7 @@ class NotificationCard extends StatelessWidget {
               },
               child:Text("Delete",style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 14.sp,
+                fontSize: 14,
                 color: primaryColor,
               ),),
             ),

@@ -57,7 +57,7 @@ class _notificationScreenState extends State<notificationScreen> {
               'Notification',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 23.sp,
+                fontSize: 23,
               ),
             ),
           ),
