@@ -19,7 +19,7 @@ void showDonationSuccessDialog(BuildContext context) {
             const SizedBox(height: 16),
             Text('Thank You',style: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.bold,
-              fontSize: 20.sp,
+              fontSize: 20,
             ),
               textAlign: TextAlign.center,
             ),
@@ -30,7 +30,7 @@ void showDonationSuccessDialog(BuildContext context) {
               style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                 fontWeight: FontWeight.w500,
                 color: Colors.grey.shade500,
-                fontSize: 15.sp,
+                fontSize: 15,
               ),
             ),
             const SizedBox(height: 20),
@@ -46,7 +46,7 @@ void showDonationSuccessDialog(BuildContext context) {
               },
               child: Text('Back To Home',style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,color: Colors.white,
-                fontSize: 15.sp,
+                fontSize: 15,
               ),
                 textAlign: TextAlign.center,
               ),

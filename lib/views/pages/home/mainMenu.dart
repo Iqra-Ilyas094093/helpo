@@ -41,12 +41,12 @@ class mainMenu extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.only(bottom: 8,left: 12,right: 12 ).w.h,
+                  const EdgeInsets.only(bottom: 8,left: 12,right: 12 ),
               child: Text(
                 title,
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.bold,
-                  fontSize: 15.sp,
+                  fontSize: 15,
                 ),
               ),
             ),
@@ -57,7 +57,7 @@ class mainMenu extends StatelessWidget {
                   Text(
                     "\$4,345 ",
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontSize: 12.sp,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                       // color: Colors.grey.shade700,
                     ),
@@ -65,14 +65,14 @@ class mainMenu extends StatelessWidget {
                   Text(
                     "fund raised from",
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontSize: 12.sp,
+                      fontSize: 12,
                       color: Colors.grey.shade700,
                     ),
                   ),
                   Text(
                     " \$9,000",
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontSize: 12.sp,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                       // color: Colors.grey.shade700,
                     ),
@@ -95,7 +95,7 @@ class mainMenu extends StatelessWidget {
                   Text(
                     "4,882 donators",
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontSize: 12.sp,
+                      fontSize: 12,
                       fontWeight: FontWeight.w700,
                       // color: Colors.grey.shade700,
                     ),
@@ -103,7 +103,7 @@ class mainMenu extends StatelessWidget {
                   Text(
                     "4 days left",
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontSize: 12.sp,
+                      fontSize: 12,
                       fontWeight: FontWeight.w700,
                       // color: Colors.grey.shade700,
                     ),
@@ -116,7 +116,7 @@ class mainMenu extends StatelessWidget {
               child: Text(
                 descriptionText,
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  fontSize: 13.sp,
+                  fontSize: 13,
                   fontWeight: FontWeight.w500,
                   // color: Colors.grey.shade700,
                 ),

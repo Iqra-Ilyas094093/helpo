@@ -12,10 +12,10 @@ class resendCode extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          "didn't recieve the email? ",
+          "didn't receive the email? ",
           style: TextStyle(
             fontWeight: FontWeight.w400,
-            fontSize: 15.sp,
+            fontSize: 15,
             color: primaryColor,
           ),
         ),
@@ -27,7 +27,7 @@ class resendCode extends StatelessWidget {
               decoration: TextDecoration.underline,
               decorationColor: primaryColor,
               fontWeight: FontWeight.w500,
-              fontSize: 15.sp,
+              fontSize: 15,
               color: primaryColor,
             ),
           ),

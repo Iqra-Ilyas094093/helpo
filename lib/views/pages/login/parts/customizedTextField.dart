@@ -13,7 +13,7 @@ class customizedTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 35.h,
+      height: 35,
       child: TextFormField(
         validator: func,
         controller: controller,

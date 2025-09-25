@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/utilites/colors.dart';
+import 'package:login_design/utilites/routes/routes.dart';
+import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/views/pages/splashScreen.dart';
 
 import 'firebase_options.dart';
@@ -54,6 +56,8 @@ class MyApp extends StatelessWidget {
           ),
           title: 'Login Ui',
           home: splashScreen(),
+          initialRoute: RoutesName.splash,
+          onGenerateRoute: Routes.generateRoute,
         );
         return kIsWeb?Center(child: SizedBox(width: 390,child: app,),):app;
       },

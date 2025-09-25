@@ -13,7 +13,7 @@ class registerButton extends StatelessWidget {
       onTap: ontap ,
       child: Container(
         width: double.infinity,
-        height: 35.h,
+        height: 35,
         decoration: BoxDecoration(
           color: primaryColor,
           borderRadius: BorderRadius.circular(12.r),
@@ -23,7 +23,7 @@ class registerButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: backgroundColor,
-              fontSize: 18.sp,
+              fontSize: 18,
               fontWeight: FontWeight.w800,
             ),
             textAlign: TextAlign.center,

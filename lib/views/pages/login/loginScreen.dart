@@ -33,7 +33,6 @@ class _loginScreenState extends State<loginScreen> {
   TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -52,20 +51,20 @@ class _loginScreenState extends State<loginScreen> {
                     "Welcome Back",
                     //18 700
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontSize: 18.sp,
+                      fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   Text(
                     "Explore Something new",
-                    style: TextStyle(fontSize: 16.sp, color: secondaryColor),
+                    style: TextStyle(fontSize: 16, color: secondaryColor),
                   ),
                   SizedBox(height: 18.h),
                   fieldLabel(text: 'Email'),
                   customizedTextField(
                     func: validateEmail,
                     icon: Icons.email_outlined,
-                    controller: authViewModel.emailController,
+                    controller: emailController,
                     onPressIcon: () {},
                   ),
                   SizedBox(height: 18.h),
@@ -79,14 +78,8 @@ class _loginScreenState extends State<loginScreen> {
                   SizedBox(height: 15.h),
                   registerButton(
                     text: 'Login',
-                    ontap: () async {
-                      if(PasswordController.text.isEmpty){
-                        Utils.flushBarErrorMessage('Enter Password', context);
-                      }else{
-                        Map data = {"email":authViewModel.emailController.text,"password":PasswordController.text};
-                        authViewModel.loginApi(data,context);
-                        print('api hit');
-                      }
+                    ontap: () {
+                      Navigator.pushNamed(context, RoutesName.verification);
                     },
                   ),
                   SizedBox(height: 8.h),
@@ -99,7 +92,7 @@ class _loginScreenState extends State<loginScreen> {
                         style: Theme.of(
                           context,
                         ).textTheme.headlineSmall!.copyWith(
-                          fontSize: 15.sp,
+                          fontSize: 15,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
@@ -111,7 +104,7 @@ class _loginScreenState extends State<loginScreen> {
                           ' Register',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
-                            fontSize: 15.sp,
+                            fontSize: 15,
                             color: primaryColor,
                           ),
                         ),
@@ -132,7 +125,7 @@ class _loginScreenState extends State<loginScreen> {
                           decoration: TextDecoration.underline,
                           decorationColor: primaryColor,
                           fontWeight: FontWeight.w500,
-                          fontSize: 15.sp,
+                          fontSize: 15,
                           color: primaryColor,
                         ),
                       ),
@@ -140,15 +133,7 @@ class _loginScreenState extends State<loginScreen> {
                   ),
                   SizedBox(height: 10.h),
                   googleCard(
-                    onPressed: () async {
-                      final userCred = await googleSignIn(context);
-                      if (userCred != null) {
-                        Navigator.pushReplacementNamed(context, RoutesName.home);
-                        Utils.flushBarErrorMessage("Signed in as ${userCred.user?.displayName}", context);
-                      } else {
-                        Utils.flushBarErrorMessage("Sign in cancelled or failed", context);
-                      }
-                    },
+                    onPressed: () {},
                   ),
                 ],
               ),

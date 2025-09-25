@@ -11,7 +11,7 @@ class richText extends StatelessWidget {
         text: 'By Signing to this Account You are accepting our ',
         style: TextStyle(
           fontWeight: FontWeight.w400,
-          fontSize: 14.sp,
+          fontSize: 14,
           color: secondaryColor,
         ),
         children: <TextSpan>[
@@ -19,7 +19,7 @@ class richText extends StatelessWidget {
             text: 'Terms and Conditions',
             style: TextStyle(
               fontWeight: FontWeight.w400,
-              fontSize: 14.sp,
+              fontSize: 14,
               color: primaryColor,
             ),
           ),

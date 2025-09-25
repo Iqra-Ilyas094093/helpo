@@ -5,7 +5,7 @@ import '../../../../utilites/colors.dart';
 
 class topHeader extends StatelessWidget {
   String text;
-  int size ;
+  double size ;
   topHeader({super.key,required this.text,this.size= 32});
 
   @override
@@ -17,7 +17,7 @@ class topHeader extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            fontSize: size.sp,
+            fontSize: size,
             color: primaryColor,
             fontWeight: FontWeight.bold,
           ),

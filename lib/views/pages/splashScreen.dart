@@ -35,7 +35,7 @@ class _splashScreenState extends State<splashScreen> {
       backgroundColor: backgroundColor,
       body: AnimatedSplashScreen(
         splash: Image.asset('assets/images/haqdaar.jpeg'),
-        nextScreen: homeScreen(),
+        nextScreen: getStarted(),
         splashIconSize: 300,
       ),
     );

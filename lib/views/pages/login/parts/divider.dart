@@ -16,7 +16,7 @@ class divider extends StatelessWidget {
           child: Text(
             //20 500
             'or',
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20.sp,fontWeight: FontWeight.w500)
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 20,fontWeight: FontWeight.w500)
           ),
         ),
         Expanded(child: Divider(color: secondaryColor)),

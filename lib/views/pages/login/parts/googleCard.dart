@@ -11,7 +11,7 @@ class googleCard extends StatelessWidget {
       onTap: onPressed,
       child: Card(
         child: Container(
-          height: 35.h,
+          height: 35,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.r),
@@ -26,7 +26,7 @@ class googleCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text('Continue with Google',style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontSize: 15.sp,
+                  fontSize: 15,
                   fontWeight: FontWeight.w700,
                 ),),
               ),

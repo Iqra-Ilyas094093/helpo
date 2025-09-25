@@ -15,7 +15,6 @@ class forgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
-    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -30,7 +29,7 @@ class forgotPassword extends StatelessWidget {
               Text(
                 'Enter your email to reset Password',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontSize: 18.sp,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -46,12 +45,7 @@ class forgotPassword extends StatelessWidget {
               SizedBox(height: 30.h),
               registerButton(
                 text: 'Reset Password',
-                ontap: () async{
-                  Map data = {
-                    "email":emailController.text,
-                  };
-                  authViewModel.forgotPasswordApi(data, context);
-                },
+                ontap: () {}
               ),
             ],
           ),

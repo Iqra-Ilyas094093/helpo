@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/utilites/colors.dart';
+import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/views/pages/verification/parts/pinputform.dart';
 import 'package:login_design/views/pages/verification/parts/registerButton.dart';
 import 'package:login_design/views/pages/verification/parts/resendCode.dart';
@@ -22,7 +23,6 @@ class _verificationScreenState extends State<verificationScreen> {
   @override
   Widget build(BuildContext context) {
     TextEditingController otpController = TextEditingController();
-    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -38,7 +38,7 @@ class _verificationScreenState extends State<verificationScreen> {
                 Text(
                   'Enter your\nVerification Code',
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 28.sp,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -47,7 +47,7 @@ class _verificationScreenState extends State<verificationScreen> {
                 SizedBox(height: 30.h),
                 Text(
                   '02:00',
-                  style: TextStyle(fontSize: 14.sp, color: primaryColor),
+                  style: TextStyle(fontSize: 14, color: primaryColor),
                 ),
                 SizedBox(height: 10.h),
                 sentOTPcode(text:'user',),
@@ -56,13 +56,8 @@ class _verificationScreenState extends State<verificationScreen> {
                 SizedBox(height: 15.h),
                 registerButton(
                   text: 'Register',
-                  ontap: () async{
-                    Map data = {
-                      "otp": otpController.text,
-                      "email": authViewModel.emailController.text,
-                    };
-                    authViewModel.otpVerificationApi(data, context);
-
+                  ontap: () {
+                    Navigator.pushReplacementNamed(context, RoutesName.home);
                   },
                 ),
               ],

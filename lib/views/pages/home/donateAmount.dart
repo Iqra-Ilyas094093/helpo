@@ -26,7 +26,7 @@ class donateAmount extends StatelessWidget {
                 'Donate Amount',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.bold,
-                  fontSize: 20.sp,
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -36,7 +36,7 @@ class donateAmount extends StatelessWidget {
                 'Enter donation amount',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.w700,
-                  fontSize: 17.sp,
+                  fontSize: 17,
                 ),
               ),
             ),
@@ -46,7 +46,7 @@ class donateAmount extends StatelessWidget {
                 'How much would you like to top up?',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.w700,
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   color: Colors.grey.shade600
                 ),
               ),
@@ -62,7 +62,7 @@ class donateAmount extends StatelessWidget {
                 child: Center(child: Text('\$ 100.0',style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
-                  fontSize: 25.sp,
+                  fontSize: 25,
                 ),),),
               ),
             ),
@@ -78,7 +78,7 @@ class donateAmount extends StatelessWidget {
                   ),
                   child: Center(child: Text(amount[index],style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.bold,
-                    fontSize: 12.sp,
+                    fontSize: 12,
                     color: Colors.black
                   ),),),
                 );

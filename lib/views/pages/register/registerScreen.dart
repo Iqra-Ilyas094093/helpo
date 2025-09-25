@@ -30,6 +30,7 @@ class _registerScreenState extends State<registerScreen> {
   final emailNode = FocusNode();
   final passwordNode = FocusNode();
   final confirmPasswordNode = FocusNode();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
@@ -38,12 +39,11 @@ class _registerScreenState extends State<registerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24).w,
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,12 +55,12 @@ class _registerScreenState extends State<registerScreen> {
                   "Let's Get Started ",
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.w700,
-                    fontSize: 19.sp,
+                    fontSize: 19,
                   ),
                 ),
                 Text(
                   "Create new Account",
-                  style: TextStyle(fontSize: 16.sp, color: secondaryColor),
+                  style: TextStyle(fontSize: 16, color: secondaryColor),
                 ),
                 SizedBox(height: 18.h),
                 registerField(
@@ -76,7 +76,7 @@ class _registerScreenState extends State<registerScreen> {
                   node1: emailNode,
                   node2: passwordNode,
                   validator: validateEmail,
-                  controller: authViewModel.emailController,
+                  controller:emailController,
                   hintText: 'Enter Email',
                   icon: Icons.email_outlined,
                 ),
@@ -119,27 +119,8 @@ class _registerScreenState extends State<registerScreen> {
                 SizedBox(height: 16.h),
                 registerButton(
                   text: 'Register',
-                  ontap: () async {
-                    if (passwordController.text ==
-                        confirmPasswordController.text) {
-                      if(authViewModel.emailController.text.isEmpty){
-                        Utils.flushBarErrorMessage('Enter Email', context);
-                      }else if(passwordController.text.isEmpty){
-                        Utils.flushBarErrorMessage('Enter password', context);
-                      }
-                      else{
-                        Map data = {
-                          "name":usernameController.text,
-                          "email":authViewModel.emailController,
-                          "password":passwordController.text,
-                          "role":selectedValue,
-                        };
-                        authViewModel.registerApi(data, context);
-                      }
-                    }
-                     else {
-                      Utils.flushBarErrorMessage('Passwords Not Matched', context);
-                    }
+                  ontap: ()  {
+                    Navigator.pushNamed(context, RoutesName.verification);
                   },
                 ),
                 SizedBox(height: 10.h),
@@ -153,7 +134,7 @@ class _registerScreenState extends State<registerScreen> {
                         context,
                       ).textTheme.headlineSmall!.copyWith(
                         fontWeight: FontWeight.w300,
-                        fontSize: 15.sp,
+                        fontSize: 15,
                       ),
                     ),
                     InkWell(
@@ -164,7 +145,7 @@ class _registerScreenState extends State<registerScreen> {
                         ' Login',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 15.sp,
+                          fontSize: 15,
                           color: primaryColor,
                         ),
                       ),

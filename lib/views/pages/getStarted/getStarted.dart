@@ -29,7 +29,6 @@ class _getStartedState extends State<getStarted> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 53.h),
               CarouselSlider.builder(
                 itemCount: images.length,
                 itemBuilder: (context, index, realIndex) {
@@ -42,7 +41,7 @@ class _getStartedState extends State<getStarted> {
                 },
                 options: CarouselOptions(
                   aspectRatio: 9 / 16,
-                  height: MediaQuery.of(context).size.height * 0.65,
+                  height: MediaQuery.of(context).size.height * 0.85,
                   autoPlay: true,
                   viewportFraction: 1,
 
@@ -57,7 +56,7 @@ class _getStartedState extends State<getStarted> {
 
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 40.0).h,
+                  padding: const EdgeInsets.only(bottom: 10.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -69,7 +68,7 @@ class _getStartedState extends State<getStarted> {
                           dotColor: Colors.grey.shade400,
                         ),
                       ),
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 10),
                       registerButton(text: 'Get Started', ontap:() {
                         Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>loginScreen()));
                       })
@@ -92,17 +91,17 @@ class _getStartedState extends State<getStarted> {
   ) {
     return Column(
       children: [
-        SizedBox(height: 380.h, child: LottieBuilder.asset(image)),
+        SizedBox(height: 380, child: LottieBuilder.asset(image)),
 
         Text(
           mainText,
           //20 700
-          style:Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w700,fontSize: 20.sp)
+          style:Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w700,fontSize: 20)
         ),
         Text(
           secondText,
           style: TextStyle(
-            fontSize: 15.sp,
+            fontSize: 15,
             color: secondaryColor,
             fontWeight: FontWeight.w400,
           ),

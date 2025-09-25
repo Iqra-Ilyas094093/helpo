@@ -11,43 +11,45 @@ class profileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(
-      children: [
-        SizedBox(height: 70.h,),
-        Center(
-          child: CircleAvatar(
-            radius: 70,
-            backgroundColor: primaryColor,
-            backgroundImage: AssetImage('assets/images/prof.jpg'),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 20.0),
-          child: fieldLabel(text: 'Talawish Sikandar'),
-        ),
-        Text(
-          // workflow094093@gmail.com
-          'workflow094093@gmail.com',
-          //15 500
-          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-            fontWeight: FontWeight.bold,
-            fontSize: 13,
-            color: Colors.grey.shade400
-          ),
-        ),
-        SizedBox(height: 15.h,),
-        SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0).w,
-            child: Column(
-              children: List.generate(4, (index) {
-                return profileTiles(name: ProfileList[index],icon: icons[index],);
-              }),
+    return Scaffold(body: SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 70.h,),
+          Center(
+            child: CircleAvatar(
+              radius: 70,
+              backgroundColor: primaryColor,
+              backgroundImage: AssetImage('assets/images/prof.jpg'),
             ),
           ),
-        )
-      ],
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: fieldLabel(text: 'Talawish Sikandar'),
+          ),
+          Text(
+            // workflow094093@gmail.com
+            'workflow094093@gmail.com',
+            //15 500
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+              fontWeight: FontWeight.bold,
+              fontSize: 13,
+              color: Colors.grey.shade400
+            ),
+          ),
+          SizedBox(height: 15.h,),
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0).w,
+              child: Column(
+                children: List.generate(4, (index) {
+                  return profileTiles(name: ProfileList[index],icon: icons[index],);
+                }),
+              ),
+            ),
+          )
+        ],
+      ),
     ));
   }
 }
@@ -71,11 +73,11 @@ class profileTiles extends StatelessWidget {
               children: [
                 Icon(icon,color: Colors.black,),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 12).h.w,
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 12),
                   child: Text(name,style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
-                    color: Colors.black,
+                    // color: Colors.black,
                   ),),
                 ),
                 Spacer(),

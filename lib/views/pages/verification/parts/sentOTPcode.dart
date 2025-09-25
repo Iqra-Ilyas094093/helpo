@@ -14,19 +14,19 @@ class sentOTPcode extends StatelessWidget {
       TextSpan(
         //16 500
         text: "We've send a verification code to your email " ,
-        style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500,fontSize: 16.sp),
+        style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500,fontSize: 16),
         children: <TextSpan>[
           TextSpan(
             text: '$text*********@gmail.com.',
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: 16.sp,
+              fontSize: 16,
               color: primaryColor,
             ),
           ),
           TextSpan(
             text: 'You can check your inbox.',
-            style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500,fontSize: 16.sp)
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500,fontSize: 16)
           ),
         ],
       ),

@@ -25,11 +25,11 @@ class _paymentMethodState extends State<paymentMethod> {
           children: [
             Text('\$ 100.0',style: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.bold,
-              fontSize: 25.sp,
+              fontSize: 25,
             ),),
             Container(
-              height: 40.h,
-              width: 150.w,
+              height: 40,
+              width: 150,
               decoration: BoxDecoration(
                 color: primaryColor,
                 borderRadius: BorderRadius.circular(12.r),
@@ -42,7 +42,7 @@ class _paymentMethodState extends State<paymentMethod> {
                   child: Text('Donate',style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    fontSize: 25.sp,
+                    fontSize: 25,
                   ),
                   textAlign: TextAlign.center,
                   ),
@@ -61,7 +61,7 @@ class _paymentMethodState extends State<paymentMethod> {
                 'Payment Method',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.bold,
-                  fontSize: 20.sp,
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -76,7 +76,7 @@ class _paymentMethodState extends State<paymentMethod> {
                     'Choose your payment Method',
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w500,
-                      fontSize: 15.sp,
+                      fontSize: 15,
                     ),
                     textAlign: TextAlign.start,
                   ),
