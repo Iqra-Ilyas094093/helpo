@@ -6,16 +6,17 @@ import '../../../../utilites/colors.dart';
 class customizedTextField extends StatelessWidget {
   VoidCallback onPressIcon;
   IconData icon;
-  FormFieldValidator<String> func;
+  FormFieldValidator<String> validator;
   TextEditingController controller;
-  customizedTextField({super.key,required this.icon,required this.controller,required this.onPressIcon,required this.func});
+  customizedTextField({super.key,required this.icon,required this.controller,required this.onPressIcon,required this.validator});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 35,
       child: TextFormField(
-        validator: func,
+        validator: validator,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: controller,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(top: 8,left: 8),

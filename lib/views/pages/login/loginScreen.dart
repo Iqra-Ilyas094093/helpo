@@ -4,7 +4,6 @@ import 'package:login_design/auth/emailAuthentication.dart';
 import 'package:login_design/utilites/colors.dart';
 import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/utilites/validators.dart';
-import 'package:login_design/view_models/auth_view_model.dart';
 import 'package:login_design/views/pages/login/parts/customizedTextField.dart';
 import 'package:login_design/views/pages/login/parts/divider.dart';
 import 'package:login_design/views/pages/login/parts/fieldLabel.dart';
@@ -62,14 +61,14 @@ class _loginScreenState extends State<loginScreen> {
                   SizedBox(height: 18.h),
                   fieldLabel(text: 'Email'),
                   customizedTextField(
-                    func: validateEmail,
+                    validator: validateEmail,
                     icon: Icons.email_outlined,
                     controller: emailController,
                     onPressIcon: () {},
                   ),
                   SizedBox(height: 18.h),
                   fieldLabel(text: 'Password'),
-                  passwordField(controller: PasswordController,obscure: true,text: '',node1: passwordNode,node2: passwordNode,),
+                  passwordField(controller: PasswordController,obscure: true,text: '',node1: passwordNode,node2: passwordNode,validator: validatePassword,),
                   SizedBox(height: 15.h),
                   divider(),
                   SizedBox(height: 15.h),
@@ -79,7 +78,24 @@ class _loginScreenState extends State<loginScreen> {
                   registerButton(
                     text: 'Login',
                     ontap: () {
-                      Navigator.pushNamed(context, RoutesName.verification);
+                      if(emailController.text.isNotEmpty& PasswordController.text.isNotEmpty & phoneController.text.isNotEmpty){
+                        Utils.flushBarMessage('Login Success', context, Colors.green, Icons.check_circle_outline);
+                        Navigator.pushNamed(context, RoutesName.verification);
+                      }
+                      else{
+                        if(emailController.text.isEmpty){
+                          Utils.flushBarMessage('Empty Email', context, Colors.red, Icons.error_outline);
+                        }else if(PasswordController.text.isEmpty){
+                          Utils.flushBarMessage('Empty Password', context, Colors.red, Icons.error_outline);
+                        }
+                        else if(phoneController.text.isEmpty){
+                          Utils.flushBarMessage('Enter phone Number', context, Colors.red, Icons.error_outline);
+                        }
+                        else{
+                          Utils.flushBarMessage('Enter all Credentials', context, Colors.red, Icons.error_outline);
+                        }
+                      }
+
                     },
                   ),
                   SizedBox(height: 8.h),

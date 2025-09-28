@@ -8,7 +8,6 @@ import 'package:login_design/views/pages/notificationScreen/notificationScreen.d
 import 'package:login_design/views/pages/profileScreen/profileScreen.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../repository/splashServices.dart';
 import 'login/loginScreen.dart';
 
 class splashScreen extends StatefulWidget {

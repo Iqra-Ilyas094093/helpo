@@ -25,7 +25,7 @@ class Utils {
 
   //imported this from flush bar package
   // we will utilise this for showing errors or success messages
-  static void flushBarErrorMessage(String message, BuildContext context){
+  static void flushBarMessage(String message, BuildContext context,Color color,IconData icon){
     showFlushbar(context: context,
       flushbar: Flushbar(
         forwardAnimationCurve:Curves.decelerate,
@@ -35,10 +35,10 @@ class Utils {
         duration: const Duration(seconds: 3),
         borderRadius: BorderRadius.circular(8),
         flushbarPosition: FlushbarPosition.BOTTOM,
-        backgroundColor: Colors.red,
+        backgroundColor: color,
         reverseAnimationCurve: Curves.easeInOut,
         positionOffset: 20,
-        icon: const Icon(Icons.error , size: 28 , color: Colors.white,),
+        icon:  Icon(icon , size: 28 , color: Colors.white,),
       )..show(context),
 
     );

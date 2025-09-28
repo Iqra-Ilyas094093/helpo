@@ -10,7 +10,8 @@ class passwordField extends StatefulWidget {
   String text;
   bool obscure;
   TextEditingController controller;
-  passwordField({super.key,required this.controller,required this.obscure,required this.text,required this.node1,required this.node2,});
+  final FormFieldValidator<String> validator;
+  passwordField({super.key,required this.controller,required this.obscure,required this.text,required this.node1,required this.node2, required this.validator,});
 
   @override
   State<passwordField> createState() => _passwordFieldState();
@@ -21,13 +22,14 @@ class _passwordFieldState extends State<passwordField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 35,
+      height: 53,
       child: TextFormField(
         focusNode: widget.node1,
         onFieldSubmitted: (_){
           FocusScope.of(context).requestFocus(widget.node2);
         },
-        validator: validatePassword,
+        validator: widget.validator,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         obscureText: widget.obscure,
         controller: widget.controller,
         decoration: InputDecoration(

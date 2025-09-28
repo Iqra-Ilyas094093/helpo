@@ -7,8 +7,6 @@ import 'package:login_design/views/pages/verification/parts/pinputform.dart';
 import 'package:login_design/views/pages/verification/parts/registerButton.dart';
 import 'package:login_design/views/pages/verification/parts/resendCode.dart';
 import 'package:login_design/views/pages/verification/parts/sentOTPcode.dart';
-import 'package:provider/provider.dart';
-import '../../../view_models/auth_view_model.dart';
 import '../login/parts/topheader.dart';
 
 class verificationScreen extends StatefulWidget {

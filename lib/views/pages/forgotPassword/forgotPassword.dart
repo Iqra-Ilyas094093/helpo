@@ -1,7 +1,5 @@
 
 import 'package:login_design/utilites/validators.dart';
-import 'package:provider/provider.dart';
-import '../../../view_models/auth_view_model.dart';
 import '../login/parts/topheader.dart';
 import '../register/parts/registerField.dart';
 import '../verification/parts/registerButton.dart';

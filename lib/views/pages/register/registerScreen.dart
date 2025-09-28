@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/auth/emailAuthentication.dart';
 import 'package:login_design/utilites/colors.dart';
 import 'package:login_design/utilites/validators.dart';
-import 'package:login_design/view_models/auth_view_model.dart';
 import 'package:login_design/views/pages/register/parts/registerField.dart';
 import 'package:login_design/views/pages/register/parts/rich%20text.dart';
 import 'package:provider/provider.dart';
@@ -81,9 +80,9 @@ class _registerScreenState extends State<registerScreen> {
                   icon: Icons.email_outlined,
                 ),
                 SizedBox(height: 16.h),
-                passwordField(controller: passwordController, obscure: true, text: 'Enter Password',node2: confirmPasswordNode,node1: passwordNode,),
+                passwordField(controller: passwordController, obscure: true, text: 'Enter Password',node2: confirmPasswordNode,node1: passwordNode,validator: validatePassword,),
                 SizedBox(height: 16.h),
-                passwordField(controller: confirmPasswordController, obscure: true, text: 'Confirm Password',node1: confirmPasswordNode,node2: confirmPasswordNode,),
+                passwordField(controller: confirmPasswordController, obscure: true, text: 'Confirm Password',node1: confirmPasswordNode,node2: confirmPasswordNode,validator: validatePassword,),
                 SizedBox(height: 16.h),
                 DropdownButtonFormField<String>(
                   isDense: true,
@@ -120,6 +119,28 @@ class _registerScreenState extends State<registerScreen> {
                 registerButton(
                   text: 'Register',
                   ontap: ()  {
+                    if(emailController.text.isNotEmpty& passwordController.text.isNotEmpty & usernameController.text.isNotEmpty){
+                      Utils.snackBar('success', context);
+                      Navigator.pushNamed(context, RoutesName.verification);
+                    }
+                    else{
+                      if(emailController.text.isEmpty){
+                        Utils.flushBarMessage('Empty Email', context, Colors.red, Icons.error_outline);
+                      }else if(passwordController.text.isEmpty){
+                        Utils.flushBarMessage('Empty Password', context, Colors.red, Icons.error_outline);
+                      }else if(confirmPasswordController.text.isEmpty){
+                        Utils.flushBarMessage('Empty confirm password', context, Colors.red, Icons.error_outline);
+                      }
+                      else if(passwordController.text!=confirmPasswordController.text){
+                        Utils.flushBarMessage('Passwords not matched', context, Colors.red, Icons.error_outline);
+                      }
+                      else if(usernameController.text.isEmpty){
+                        Utils.flushBarMessage('Enter Username', context, Colors.red, Icons.error_outline);
+                      }
+                      else{
+                        Utils.flushBarMessage('Enter all Credentials', context, Colors.red, Icons.error_outline);
+                      }
+                    }
                     Navigator.pushNamed(context, RoutesName.verification);
                   },
                 ),
