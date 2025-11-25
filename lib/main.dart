@@ -7,13 +7,8 @@ import 'package:login_design/utilites/routes/routes.dart';
 import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/views/pages/splashScreen.dart';
 
-import 'firebase_options.dart';
 
 void main()async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   runApp(const MyApp());
 }
 

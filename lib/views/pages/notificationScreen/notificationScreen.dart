@@ -29,7 +29,7 @@ class _notificationScreenState extends State<notificationScreen> {
         backgroundColor: primaryColor,
         content: Text('Notification deleted',style: Theme.of(context).textTheme.titleLarge!.copyWith(
           fontWeight: FontWeight.bold,
-          fontSize: 15.sp,
+          fontSize: 15,
           color: Colors.white,
         ),),
         action: SnackBarAction(

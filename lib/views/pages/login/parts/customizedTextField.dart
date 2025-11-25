@@ -12,32 +12,29 @@ class customizedTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 35,
-      child: TextFormField(
-        validator: validator,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        controller: controller,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(top: 8,left: 8),
-          hintText: '',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14.r),
-          ),
-          filled: true,
-          suffixIcon: IconButton(onPressed: onPressIcon, icon: Icon(icon)),
-          fillColor: Theme.of(context).colorScheme.surface,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14.r),
-            borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: primaryColor, width: 2),
-            borderRadius: BorderRadius.circular(14.r)
-          ),disabledBorder: OutlineInputBorder(
+    return TextFormField(
+      validator: validator,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      controller: controller,
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.only(top: 8,left: 8),
+        hintText: '',
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14.r),
-        )
         ),
+        filled: true,
+        suffixIcon: IconButton(onPressed: onPressIcon, icon: Icon(icon)),
+        fillColor: Theme.of(context).colorScheme.surface,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14.r),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: primaryColor, width: 2),
+          borderRadius: BorderRadius.circular(14.r)
+        ),disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14.r),
+      )
       ),
     );
   }

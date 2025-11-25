@@ -141,7 +141,6 @@ class _registerScreenState extends State<registerScreen> {
                         Utils.flushBarMessage('Enter all Credentials', context, Colors.red, Icons.error_outline);
                       }
                     }
-                    Navigator.pushNamed(context, RoutesName.verification);
                   },
                 ),
                 SizedBox(height: 10.h),
