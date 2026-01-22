@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:login_design/auth/emailAuthentication.dart';
 import 'package:login_design/utilites/colors.dart';
 import 'package:login_design/utilites/routes/routes_name.dart';
 import 'package:login_design/utilites/validators.dart';

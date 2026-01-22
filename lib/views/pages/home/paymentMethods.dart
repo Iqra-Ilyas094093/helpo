@@ -23,7 +23,9 @@ class _paymentMethodState extends State<paymentMethod> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('\$ 100.0',style: Theme.of(context).textTheme.titleLarge!.copyWith(
+            Text(
+              '\$ 100.0',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.bold,
               fontSize: 25,
             ),),
@@ -72,8 +74,7 @@ class _paymentMethodState extends State<paymentMethod> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    'Choose your payment Method',
+                  Text('Choose your payment Method',
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.w500,
                       fontSize: 15,
@@ -86,6 +87,7 @@ class _paymentMethodState extends State<paymentMethod> {
             Expanded(
               child: ListView.builder(
                 itemCount: methods.length,
+                // itemCount: 1,
                 itemBuilder: (context, index) {
                   final method = methods[index];
                   return PaymentMethodTile(

@@ -18,13 +18,11 @@ class splashScreen extends StatefulWidget {
 }
 
 class _splashScreenState extends State<splashScreen> {
-  // splashServices splash = splashServices();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // splash.checkAuthentication(context);
   }
 
   @override

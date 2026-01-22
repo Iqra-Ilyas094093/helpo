@@ -24,7 +24,7 @@ class otpPinPut extends StatelessWidget {
       ),
     );
     return Pinput(
-      length: 4, // Change to 4 or 6 depending on your OTP length
+      length: 4,
       controller: otpController,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       defaultPinTheme: defaultPinTheme,

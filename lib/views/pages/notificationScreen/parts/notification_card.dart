@@ -5,12 +5,12 @@ import 'notification_model.dart';
 
 class NotificationCard extends StatelessWidget {
   final NotificationItem item;
-  final VoidCallback onDelete; // Callback function to handle delete
+  final VoidCallback onDelete;
 
   const NotificationCard({
     super.key,
     required this.item,
-    required this.onDelete, // Pass the onDelete callback
+    required this.onDelete,
   });
 
   void _showNotificationDialog(BuildContext context) {
@@ -98,7 +98,7 @@ class NotificationCard extends StatelessWidget {
           fontSize: 12,color: Colors.grey.shade500
         ),),
         trailing: IconButton(
-          icon: const Icon(Icons.more_vert), // Dropdown icon (3 dots)
+          icon: const Icon(Icons.more_vert),
           onPressed: () {
             _showDeleteDialog(context);
           },
@@ -107,7 +107,7 @@ class NotificationCard extends StatelessWidget {
     );
   }
 
-  // Show a dialog to confirm deletion
+
   void _showDeleteDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -127,7 +127,7 @@ class NotificationCard extends StatelessWidget {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context), // Close the dialog
+              onPressed: () => Navigator.pop(context),
               child: Text("Cancel",style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
@@ -136,8 +136,8 @@ class NotificationCard extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                onDelete(); // Call the onDelete callback
-                Navigator.pop(context); // Close the dialog
+                onDelete();
+                Navigator.pop(context);
               },
               child:Text("Delete",style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,

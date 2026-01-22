@@ -93,8 +93,7 @@ class mainMenu extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "4,882 donators",
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    "4,882 donators", style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
                       // color: Colors.grey.shade700,

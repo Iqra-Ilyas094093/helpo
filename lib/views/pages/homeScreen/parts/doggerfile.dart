@@ -51,7 +51,6 @@ class _DockingBarState extends State<DockingBar> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(icons.length, (i) {
                 return Transform(
-                  // alignment: AlignmentGeometry.lerp(a, b, t),
                   transform: Matrix4.identity()
                     ..scale(i == activeIndex ? value : 1.0)
                     ..translate(

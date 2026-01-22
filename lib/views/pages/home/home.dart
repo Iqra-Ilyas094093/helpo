@@ -15,17 +15,18 @@ class home extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
     return Scaffold(
-      backgroundColor: Colors.white38,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Stack(
               children: [
                 Container(
-                  height: 110,
+                  height: 130,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: primaryColor,
+                    // color: Colors.transparent,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
@@ -35,8 +36,8 @@ class home extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(
-                        vertical: 28,
-                        horizontal: 15,
+                        vertical: 39,
+                        horizontal: 17,
                       ),
                   child: Row(
                     children: [

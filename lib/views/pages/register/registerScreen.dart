@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:login_design/auth/emailAuthentication.dart';
 import 'package:login_design/utilites/colors.dart';
 import 'package:login_design/utilites/validators.dart';
 import 'package:login_design/views/pages/register/parts/registerField.dart';
 import 'package:login_design/views/pages/register/parts/rich%20text.dart';
-import 'package:provider/provider.dart';
-
 import '../../../utilites/routes/routes_name.dart';
 import '../../../utilites/utils.dart';
-import '../homeScreen/homeScreen.dart';
 import '../login/parts/divider.dart';
 import '../login/parts/googleCard.dart';
 import '../login/parts/passwordField.dart';
@@ -176,25 +172,7 @@ class _registerScreenState extends State<registerScreen> {
                 divider(),
                 SizedBox(height: 15.h),
                 googleCard(
-                  onPressed: () async {
-                    final userCred = await googleSignIn(context);
-                    if (userCred != null) {
-                      Navigator.pushReplacementNamed(context, RoutesName.home);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            "Signed in as ${userCred.user?.displayName}",
-                          ),
-                        ),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Sign in cancelled or failed"),
-                        ),
-                      );
-                    }
-                  },
+                  onPressed: () { },
                 ),
                 SizedBox(height: 10.h),
                 richText(),

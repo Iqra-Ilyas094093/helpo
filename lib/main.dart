@@ -5,6 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_design/utilites/colors.dart';
 import 'package:login_design/utilites/routes/routes.dart';
 import 'package:login_design/utilites/routes/routes_name.dart';
+import 'package:login_design/views/pages/getStarted/getStarted.dart';
+import 'package:login_design/views/pages/home/home.dart';
+import 'package:login_design/views/pages/homeScreen/homeScreen.dart';
+import 'package:login_design/views/pages/popularCompaigns/popularCompaigns.dart';
 import 'package:login_design/views/pages/splashScreen.dart';
 
 
@@ -26,7 +30,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeMode.light,
           darkTheme: ThemeData.dark().copyWith(
             brightness: Brightness.dark,
-            scaffoldBackgroundColor: Colors.black12,
+            scaffoldBackgroundColor: Colors.grey.shade700,
             textTheme: TextTheme(
               titleLarge: Theme.of(
                 context,
@@ -50,9 +54,9 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
           ),
           title: 'Login Ui',
-          home: splashScreen(),
-          initialRoute: RoutesName.splash,
-          onGenerateRoute: Routes.generateRoute,
+          home: getStarted(),
+          // initialRoute: RoutesName.splash,
+          // onGenerateRoute: Routes.generateRoute,
         );
         return kIsWeb?Center(child: SizedBox(width: 390,child: app,),):app;
       },

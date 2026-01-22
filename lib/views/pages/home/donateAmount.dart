@@ -59,7 +59,9 @@ class donateAmount extends StatelessWidget {
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(12.r)
                 ),
-                child: Center(child: Text('\$ 100.0',style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                child: Center(child: Text(
+                  '\$ 100.0',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                   fontSize: 25,
@@ -76,7 +78,9 @@ class donateAmount extends StatelessWidget {
                     color: Colors.grey.shade100,
                     borderRadius: BorderRadius.circular(12.r),
                   ),
-                  child: Center(child: Text(amount[index],style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  child: Center(child: Text(
+                    amount[index],
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                     color: Colors.black

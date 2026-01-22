@@ -36,7 +36,6 @@ class _notificationScreenState extends State<notificationScreen> {
           textColor: Colors.white,
           label: 'Undo?',
           onPressed: () {
-            // Undo the deletion by adding the item back to the list
             setState(() {
               NotificationData.items.insert(index, deletedItem);
             });
@@ -72,7 +71,7 @@ class _notificationScreenState extends State<notificationScreen> {
               itemBuilder: (context, index) {
                 return NotificationCard(
                   item: NotificationData.items[index],
-                  onDelete: () => _deleteNotification(index), // Pass the delete callback
+                  onDelete: () => _deleteNotification(index),
                 );
               },
             ),

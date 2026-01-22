@@ -17,7 +17,9 @@ void showDonationSuccessDialog(BuildContext context) {
           children: [
             Icon(Icons.check_circle, color: Colors.green, size: 60),
             const SizedBox(height: 16),
-            Text('Thank You',style: Theme.of(context).textTheme.titleLarge!.copyWith(
+            Text(
+              'Thank You'
+              ,style: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),

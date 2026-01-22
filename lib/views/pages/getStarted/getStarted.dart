@@ -25,61 +25,59 @@ class _getStartedState extends State<getStarted> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24).w,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CarouselSlider.builder(
-                itemCount: images.length,
-                itemBuilder: (context, index, realIndex) {
-                  return slider(
-                    images[index],
-                    mainText[index],
-                    secondText[index],
-                    context,
-                  );
-                },
-                options: CarouselOptions(
-                  aspectRatio: 9 / 16,
-                  height: MediaQuery.of(context).size.height * 0.85,
-                  autoPlay: true,
-                  viewportFraction: 1,
+          child: CarouselSlider.builder(
+            itemCount: images.length,
+            itemBuilder: (context, index, realIndex) {
+              return slider(
+                images[index],
+                mainText[index],
+                secondText[index],
+                context,
+              );
+            },
+            options: CarouselOptions(
+              aspectRatio: 9 / 16,
+              height: MediaQuery.of(context).size.height * 0.85,
+              autoPlay: true,
+              viewportFraction: 1,
 
-                  enlargeStrategy: CenterPageEnlargeStrategy.height,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      activeIndex = index;
-                    });
-                  },
-                ),
-              ),
-
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      AnimatedSmoothIndicator(
-                        activeIndex: activeIndex,
-                        count: 3,
-                        effect: SlideEffect(
-                          activeDotColor: primaryColor,
-                          dotColor: Colors.grey.shade400,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      registerButton(text: 'Get Started', ontap:() {
-                        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>loginScreen()));
-                      })
-                    ],
-                  ),
-                ),
-              ),
-            ],
+              enlargeStrategy: CenterPageEnlargeStrategy.height,
+              onPageChanged: (index, reason) {
+                setState(() {
+                  activeIndex = index;
+                });
+              },
+            ),
           ),
         ),
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 34),
+        child: GestureDetector(
+          onTap: () {
+      Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>loginScreen()));
+      } ,
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+              color: primaryColor,
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            child: Center(
+              child: Text(
+                'Get Started',
+                style: TextStyle(
+                  color: backgroundColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+      ) ,
     );
   }
 
@@ -90,8 +88,10 @@ class _getStartedState extends State<getStarted> {
     BuildContext context,
   ) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: 380, child: LottieBuilder.asset(image)),
+        LottieBuilder.asset(image),
 
         Text(
           mainText,

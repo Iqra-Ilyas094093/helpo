@@ -76,6 +76,7 @@ class profileTiles extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 12),
                   child: Text(name,style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.w700,
+                    color: Colors.black,
                     fontSize: 15,
                     // color: Colors.black,
                   ),),

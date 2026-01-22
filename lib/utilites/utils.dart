@@ -5,16 +5,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils {
 
-
-  // we will use this function to shift focus from one text field to another text field
-  // we are using to avoid duplications of code
   static void fieldFocusChange(BuildContext context , FocusNode current , FocusNode nextFocus){
     current.unfocus();
     FocusScope.of(context).requestFocus(nextFocus);
   }
 
-  // generic toast message imported from toast package
-  // we will utilise this for showing errors or success messages
   static toastMessage(String message){
     Fluttertoast.showToast(
       msg: message,
@@ -23,9 +18,7 @@ class Utils {
     );
   }
 
-  //imported this from flush bar package
-  // we will utilise this for showing errors or success messages
-  static void flushBarMessage(String message, BuildContext context,Color color,IconData icon){
+   static void flushBarMessage(String message, BuildContext context,Color color,IconData icon){
     showFlushbar(context: context,
       flushbar: Flushbar(
         forwardAnimationCurve:Curves.decelerate,
@@ -45,9 +38,7 @@ class Utils {
 
   }
 
-
-  // we will utilise this for showing errors or success messages
-  static snackBar(String message, BuildContext context){
+ static snackBar(String message, BuildContext context){
     return ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
             backgroundColor: Colors.red,
